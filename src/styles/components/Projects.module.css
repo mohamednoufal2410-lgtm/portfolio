@@ -1,0 +1,65 @@
+.projects {
+  padding: var(--space-3xl) var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+/* ---- More Projects Button ---- */
+.moreWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: var(--space-2xl);
+}
+
+.moreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--white-70);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  border: 1px solid var(--white-10);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.moreButton:hover {
+  color: var(--accent-green);
+  border-color: var(--accent-green);
+  background: rgba(0, 255, 102, 0.05);
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.1);
+}
+
+.moreArrow {
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+}
+
+.moreArrow.flipped {
+  transform: rotate(180deg);
+}
+
+.moreHint {
+  font-size: 0.75rem;
+  color: var(--white-40);
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

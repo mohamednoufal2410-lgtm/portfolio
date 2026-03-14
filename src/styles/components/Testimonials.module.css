@@ -1,0 +1,68 @@
+.testimonials {
+  padding: var(--space-3xl) var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carousel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.quoteIcon {
+  font-size: 2rem;
+  color: var(--accent-purple);
+  opacity: 0.6;
+  line-height: 1;
+}
+
+.quote {
+  font-size: 0.9375rem;
+  color: var(--white-70);
+  line-height: 1.7;
+  font-style: italic;
+  flex: 1;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authorName {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.9375rem;
+}
+
+.authorTitle {
+  font-size: 0.8125rem;
+  color: var(--white-40);
+}
+
+@media (max-width: 1024px) {
+  .carousel {
+    grid-template-columns: 1fr;
+  }
+}

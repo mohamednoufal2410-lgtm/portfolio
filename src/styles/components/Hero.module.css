@@ -1,0 +1,168 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-5xl) var(--space-lg) var(--space-3xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ---- Ripple Background ---- */
+.rippleBg {
+  position: absolute;
+  top: 0;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  z-index: 0;
+  pointer-events: auto;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.textSide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 700px;
+}
+
+.greeting {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--accent-green);
+  letter-spacing: 0.05em;
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5.5vw, 5rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.headline em {
+  font-style: italic;
+  color: var(--accent-green);
+}
+
+.subtext {
+  font-size: 1.125rem;
+  color: var(--white-70);
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.ctaRow {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+  pointer-events: auto;
+}
+
+.ctaPrimary {
+  padding: var(--space-md) var(--space-xl);
+  background: var(--accent-green);
+  color: var(--bg-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast) ease;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.ctaPrimary:hover {
+  box-shadow: var(--shadow-glow-green);
+  transform: translateY(-2px);
+}
+
+.ctaSecondary {
+  padding: var(--space-md) var(--space-xl);
+  background: transparent;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--white-10);
+  transition: all var(--duration-fast) ease;
+}
+
+.ctaSecondary:hover {
+  border-color: var(--white-40);
+  background: var(--white-05);
+}
+
+/* ---- Marquee ---- */
+.marqueeWrapper {
+  margin-top: var(--space-4xl);
+  overflow: hidden;
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--white-10);
+  border-bottom: 1px solid var(--white-10);
+  position: relative;
+  z-index: 10;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: var(--space-xl);
+  width: max-content;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+.marqueeItem {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent-green);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.marqueeItem::before {
+  content: '◆';
+  font-size: 0.5rem;
+  color: var(--accent-green);
+  opacity: 0.5;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .textSide {
+    align-items: center;
+    text-align: center;
+  }
+
+  .subtext {
+    max-width: 100%;
+  }
+
+  .ctaRow {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

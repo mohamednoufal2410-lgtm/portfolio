@@ -1,0 +1,73 @@
+.contact {
+  padding: var(--space-3xl) var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--white-70);
+  max-width: 480px;
+  margin: 0 auto var(--space-2xl);
+  line-height: 1.6;
+}
+
+.emailLink {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--accent-green);
+  padding: var(--space-md) var(--space-xl);
+  border: 1px solid rgba(0, 255, 102, 0.3);
+  border-radius: var(--radius-full);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  margin-bottom: var(--space-3xl);
+}
+
+.emailLink:hover {
+  background: rgba(0, 255, 102, 0.08);
+  box-shadow: var(--shadow-glow-green);
+  transform: translateY(-2px);
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.socialBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--white-05);
+  border: 1px solid var(--white-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-fast) ease;
+  color: var(--white-40);
+  font-size: 1.125rem;
+}
+
+.socialBtn:hover {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  box-shadow: var(--shadow-glow-green);
+  transform: translateY(-2px);
+}
+
+.socialBtn svg {
+  width: 20px;
+  height: 20px;
+}

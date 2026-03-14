@@ -1,0 +1,196 @@
+/* ========================================
+   GLOBAL STYLES — Mohamed Noufal Portfolio
+   ======================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---- CSS Reset ---- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--white-70);
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input, textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* ---- Design Tokens ---- */
+:root {
+  /* Colors */
+  --bg-primary:        #0D0D0D;
+  --bg-secondary:      #141414;
+  --bg-tertiary:       #1A1A1A;
+
+  --white:             #FFFFFF;
+  --white-70:          rgba(255,255,255,0.7);
+  --white-40:          rgba(255,255,255,0.4);
+  --white-10:          rgba(255,255,255,0.1);
+  --white-05:          rgba(255,255,255,0.05);
+
+  --accent-green:      #00FF66;
+  --accent-blue:       #4D5BFF;
+  --accent-purple:     #8B5CF6;
+  --accent-yellow:     #F08D32;
+  --accent-red:        #EE4D37;
+
+  --gradient-glass:    linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  --gradient-glow:     radial-gradient(circle, rgba(77,91,255,0.15) 0%, transparent 70%);
+
+  /* Typography */
+  --font-serif:        'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans:         'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:         'JetBrains Mono', 'Courier New', monospace;
+
+  /* Shadows */
+  --shadow-card:       0 4px 24px rgba(0,0,0,0.4);
+  --shadow-elevated:   0 8px 40px rgba(0,0,0,0.6);
+  --shadow-glow-green: 0 0 30px rgba(0,255,102,0.15);
+  --shadow-glow-blue:  0 0 30px rgba(77,91,255,0.2);
+
+  /* Border Radius */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+
+  /* Animation */
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast:   0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow:   0.6s;
+  --duration-reveal: 0.8s;
+  --stagger-delay:   0.08s;
+}
+
+/* ---- Dotted Grid Background ---- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Section spacing ---- */
+.section {
+  padding: var(--space-5xl) var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-green);
+  margin-bottom: var(--space-md);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: var(--space-2xl);
+}
+
+/* ---- Glass Card base ---- */
+.glass-card {
+  background: var(--gradient-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---- Selection ---- */
+::selection {
+  background: var(--accent-green);
+  color: var(--bg-primary);
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--white-10);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--white-40);
+}
