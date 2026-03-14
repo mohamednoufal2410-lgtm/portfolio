@@ -1,7 +1,7 @@
 export const caseStudies = {
   clonos: {
     title: 'CLONOS Desktop Platform',
-    headline: 'Reducing Unplanned Downtime by 28% Through Intelligent Asset Management',
+    headline: 'Reducing Unplanned Downtime by 68% Through Intelligent Asset Management',
     heroImage: '/images/projects/clonos.png',
     meta: {
       role: 'UI/UX Designer',
@@ -13,10 +13,9 @@ export const caseStudies = {
     overview:
       'I led the design of a comprehensive desktop platform that digitized critical workflows for plant engineers, transforming paper-based processes into a streamlined digital system that improved asset reliability and optimized maintenance operations.',
     metrics: [
-      { value: '28.3%', label: 'Reduction in unplanned downtime' },
+      { value: '68%', label: 'Reduction in unplanned downtime' },
       { value: '40%', label: 'Decrease in maintenance costs' },
       { value: '75%', label: 'Reduction in log processing time' },
-      { value: '4.5/5', label: 'User satisfaction score' },
     ],
     background:
       'CLONOS is an Enterprise Asset Management company delivering IoT-driven predictive maintenance and real-time monitoring solutions. The desktop platform serves as the command center for plant engineers, enabling them to manage assets, schedule maintenance, and optimize processes using predictive analytics.',
@@ -53,13 +52,13 @@ export const caseStudies = {
       'Design process optimization tooling',
     ],
     responsibilities: [
-      'Conducting user research and contextual inquiry with plant engineers',
-      'Developing information architecture and user flows',
-      'Creating wireframes and interactive prototypes',
-      'Designing high-fidelity UI mockups',
-      'Building and maintaining the design system',
-      'Conducting usability testing and iterations',
-      'Collaborating with developers for implementation',
+      'User Research',
+      'Information Architecture',
+      'Wireframing & Prototyping',
+      'Visual Design',
+      'Design System',
+      'Usability Testing',
+      'Developer Collaboration',
     ],
     research: {
       interviews: {
@@ -136,114 +135,53 @@ export const caseStudies = {
       ],
       userFlows: [
         {
-          title: 'Scheduling Maintenance',
-          steps: [
-            'Engineer navigates to Maintenance section',
-            'Creates work order or uses template',
-            'Defines scope, requirements, parts needed',
-            'Assigns to maintenance team',
-            'Sets priority and deadline',
-            'System checks resource availability',
-            'Progress tracked in real-time',
-          ],
+          title: 'Work Order Flow',
+          image: '/images/projects/Clonos - work order flow.png',
         },
-        {
-          title: 'Analyzing Asset Reliability',
-          steps: [
-            'Engineer opens Analytics dashboard',
-            'Selects asset or asset group',
-            'Views performance trends and predictions',
-            'Identifies potential failure patterns',
-            'Reviews maintenance recommendations',
-            'Plans preventive actions',
-            'Exports report for stakeholders',
-          ],
-        },
-      ],
-      iterations: [
-        { before: 'Dashboard initially showed too much data', after: 'Simplified to key metrics only' },
-        { before: 'Asset hierarchy was confusing', after: 'Added visual tree structure' },
-        { before: 'Work order form was too long', after: 'Broke into logical steps' },
-        { before: 'Charts were hard to understand', after: 'Simplified with clear labels' },
       ],
     },
-    keyScreens: [
-      {
-        title: 'Dashboard Overview',
-        description:
-          'Top metrics: total assets, active work orders, overdue tasks, uptime %. Alert banner for critical issues. Quick action buttons, recent activities timeline, asset health chart, and maintenance calendar widget.',
-        rationale:
-          'Provides engineers with immediate situational awareness. Showing critical information first lets engineers quickly identify issues. Modular widget design allows customization.',
-        image: '/images/projects/clonos-dashboard.png',
-      },
-      {
-        title: 'Log Management Interface',
-        description:
-          'Filterable list of all logs with status indicators. Quick search by asset, operator, or date range. Status columns: Assigned, In Progress, Submitted, Overdue.',
-        rationale:
-          'Engineers needed to manage hundreds of logs efficiently. Table format allows quick scanning, while status indicators provide immediate visual feedback.',
-        image: '/images/projects/clonos-logs.png',
-      },
-      {
-        title: 'Asset Detail View',
-        description:
-          'Asset information header with tabs for Overview, Specifications, Maintenance History, and Performance. Real-time status indicators with related spare parts and inventory levels.',
-        rationale:
-          'Consolidates all relevant information in one place. Engineers can understand asset status, review history, and take action without navigating multiple screens.',
-        image: '/images/projects/clonos-asset.png',
-      },
-      {
-        title: 'Reliability Analytics Dashboard',
-        description:
-          'Asset performance trends, failure prediction indicators, MTBF metrics, maintenance cost analysis, and process optimization recommendations.',
-        rationale:
-          'Transforms complex data into actionable insights. Clear visualizations help engineers identify patterns and make data-driven decisions.',
-        image: '/images/projects/clonos-analytics.png',
-      },
-    ],
     features: [
       {
         title: 'Digital Log Management System',
         problem: 'Engineers had no visibility into whether operators were completing log entries accurately or on time.',
         solution: 'Created a comprehensive digital log system with automated timestamping and real-time tracking.',
         impact: 'Eliminated manual transcription errors. Reduced log processing time by 75%.',
-        image: '/images/projects/clonos-feature-logs.png',
+        image: '/images/projects/Log management.png',
       },
       {
         title: 'Intelligent Asset Management',
         problem: 'Asset information was scattered across multiple systems and paper records.',
         solution: 'Built a centralized asset management system with hierarchical organization and automated inventory tracking.',
         impact: 'Single source of truth for asset data. Reduced parts stockouts by 45%.',
-        image: '/images/projects/clonos-feature-assets.png',
+        image: '/images/projects/Asset Screen.png',
       },
       {
         title: 'Predictive Maintenance Scheduling',
         problem: 'Maintenance was reactive, happening after equipment failed. This led to costly emergency repairs.',
         solution: 'Designed an intelligent scheduling system using historical data and patterns to predict maintenance needs.',
-        impact: 'Shifted from 80% reactive to 70% predictive. Reduced unplanned downtime by 28.3%.',
-        image: '/images/projects/clonos-feature-maintenance.png',
+        impact: 'Shifted from 80% reactive to 70% predictive. Reduced unplanned downtime by 68%.',
+        image: '/images/projects/Maintenance.png',
       },
       {
         title: 'Reliability Analytics & Optimization',
         problem: 'Engineers lacked tools to analyze asset performance trends. Data existed but wasn\'t actionable.',
         solution: 'Created comprehensive analytics dashboards that transformed raw data into meaningful insights.',
         impact: 'Data-driven decision making. Reduced maintenance costs by 40%.',
-        image: '/images/projects/clonos-feature-analytics.png',
+        image: '/images/projects/Asset reliability.png',
       },
       {
         title: 'Template Library System',
         problem: 'Creating logs, work orders, and procedures from scratch was time-consuming and led to inconsistencies.',
         solution: 'Built a comprehensive template system for all common tasks and procedures.',
         impact: '60% faster log and work order creation. Standardized processes across facilities.',
-        image: '/images/projects/clonos-feature-templates.png',
+        image: '/images/projects/Template Library.png',
       },
     ],
     results: {
       adoption: [
         { value: '95%', label: 'of engineers actively using platform' },
         { value: '87%', label: 'reduction in paper-based processes' },
-        { value: '4.5/5', label: 'average user satisfaction score' },
-        { value: '89%', label: 'would recommend to other facilities' },
+        { value: '3×', label: 'faster audit preparation turnaround' },
       ],
     },
     testimonials: [

@@ -9,8 +9,7 @@ const sectionIds = [
   { id: 'problem', label: 'Problem' },
   { id: 'research', label: 'Research' },
   { id: 'design', label: 'Design' },
-  { id: 'screens', label: 'Screens' },
-  { id: 'features', label: 'Features' },
+  { id: 'features', label: 'Solutions' },
   { id: 'results', label: 'Results' },
   { id: 'learnings', label: 'Learnings' },
 ];
@@ -28,6 +27,7 @@ export default function CaseStudy() {
   const { slug } = useParams();
   const study = caseStudies[slug];
   const [activeSection, setActiveSection] = useState('overview');
+  const [lightboxSrc, setLightboxSrc] = useState(null);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   const sectionRefs = useRef({});
@@ -110,7 +110,7 @@ export default function CaseStudy() {
 
         <motion.div className={styles.heroImage} variants={fadeUp}>
           {study.heroImage ? (
-            <img src={study.heroImage} alt={study.title} />
+            <img src={study.heroImage} alt={study.title} onClick={() => setLightboxSrc(study.heroImage)} className={styles.clickableImage} />
           ) : (
             <div className={styles.heroImagePlaceholder}>Add hero image</div>
           )}
@@ -222,11 +222,11 @@ export default function CaseStudy() {
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-md)' }}>
             My Responsibilities
           </h3>
-          <ul className={styles.bulletList}>
+          <div className={styles.pillRow}>
             {study.responsibilities.map((r, i) => (
-              <li key={i}>{r}</li>
+              <span key={i} className={styles.pill}>{r}</span>
             ))}
-          </ul>
+          </div>
         </motion.div>
       </motion.section>
 
@@ -342,21 +342,25 @@ export default function CaseStudy() {
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
             Key User Flows
           </h3>
-          <div className={styles.flowGrid}>
-            {study.designProcess.userFlows.map((flow, i) => (
-              <div key={i} className={styles.flowCard}>
-                <h4>{flow.title}</h4>
-                <div className={styles.flowSteps}>
-                  {flow.steps.map((step, j) => (
-                    <div key={j} className={styles.flowStep}>
-                      <span className={styles.num}>{String(j + 1).padStart(2, '0')}</span>
-                      <span>{step}</span>
-                    </div>
-                  ))}
+
+          {study.designProcess.userFlows.map((flow, i) => (
+            <motion.div key={i} variants={fadeUp} style={{ marginTop: i > 0 ? 'var(--space-xl)' : 'var(--space-md)' }}>
+              {flow.image && (
+                <div className={styles.screenCardImage} style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <img
+                    src={flow.image}
+                    alt={`${flow.title} — user flow`}
+                    style={{ width: '100%', display: 'block' }}
+                    onClick={() => setLightboxSrc(flow.image)}
+                    className={styles.clickableImage}
+                  />
                 </div>
-              </div>
-            ))}
-          </div>
+              )}
+              <p style={{ fontSize: '0.75rem', color: 'var(--white-40)', marginTop: 'var(--space-sm)', textAlign: 'center', fontStyle: 'italic' }}>
+                User flow — {flow.title}
+              </p>
+            </motion.div>
+          ))}
 
           <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-xl)' }}>
             <div className={styles.screenCardImage} style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
@@ -364,6 +368,8 @@ export default function CaseStudy() {
                 src="/images/projects/Clonos - Create a log user flow.png"
                 alt="Create and assign a log — user flow"
                 style={{ width: '100%', display: 'block' }}
+                onClick={() => setLightboxSrc('/images/projects/Clonos - Create a log user flow.png')}
+                className={styles.clickableImage}
               />
             </div>
             <p style={{ fontSize: '0.75rem', color: 'var(--white-40)', marginTop: 'var(--space-sm)', textAlign: 'center', fontStyle: 'italic' }}>
@@ -371,63 +377,11 @@ export default function CaseStudy() {
             </p>
           </motion.div>
         </motion.div>
-
-        {/* Iterations */}
-        <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-2xl)' }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
-            Design Iterations
-          </h3>
-          <div className={styles.iterationGrid}>
-            {study.designProcess.iterations.map((it, i) => (
-              <div key={i} className={styles.iterationCard}>
-                <span className={styles.iterationBefore}>{it.before}</span>
-                <span className={styles.iterationAfter}>{it.after}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </motion.section>
 
       <hr className={styles.divider} />
 
-      {/* ===== Key Screens ===== */}
-      <motion.section
-        id="screens"
-        ref={(el) => (sectionRefs.current.screens = el)}
-        className={styles.sectionWide}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        variants={stagger}
-      >
-        <motion.p className={styles.sectionLabel} variants={fadeUp}>Key Screens</motion.p>
-        <motion.h2 className={styles.sectionTitle} variants={fadeUp}>The Final Design</motion.h2>
-
-        <div className={styles.screenGrid}>
-          {study.keyScreens.map((screen, i) => (
-            <motion.div key={i} className={styles.screenCard} variants={fadeUp}>
-              <div className={styles.screenCardImage}>
-                {screen.image ? (
-                  <img src={screen.image} alt={screen.title} />
-                ) : (
-                  <div className={styles.screenCardPlaceholder} />
-                )}
-              </div>
-              <div className={styles.screenCardBody}>
-                <h3>{screen.title}</h3>
-                <p>{screen.description}</p>
-                {screen.rationale && (
-                  <p className={styles.screenCardRationale}>{screen.rationale}</p>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      <hr className={styles.divider} />
-
-      {/* ===== Features ===== */}
+      {/* ===== Features / Design Solutions ===== */}
       <motion.section
         id="features"
         ref={(el) => (sectionRefs.current.features = el)}
@@ -445,7 +399,7 @@ export default function CaseStudy() {
             <motion.div key={i} className={styles.featureCard} variants={fadeUp}>
               <div className={styles.featureCardImage}>
                 {feat.image ? (
-                  <img src={feat.image} alt={feat.title} />
+                  <img src={feat.image} alt={feat.title} onClick={() => setLightboxSrc(feat.image)} className={styles.clickableImage} />
                 ) : (
                   <div className={styles.featureCardPlaceholder} />
                 )}
@@ -606,6 +560,18 @@ export default function CaseStudy() {
         </motion.div>
       </motion.section>
 
+      {/* ===== Image Lightbox ===== */}
+      {lightboxSrc && (
+        <div className={styles.lightboxOverlay} onClick={() => setLightboxSrc(null)}>
+          <button className={styles.lightboxClose} onClick={() => setLightboxSrc(null)}>&times;</button>
+          <img
+            src={lightboxSrc}
+            alt="Zoomed view"
+            className={styles.lightboxImage}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }
