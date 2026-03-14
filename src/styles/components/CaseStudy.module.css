@@ -421,13 +421,32 @@
 }
 
 .personaCard {
-  background: var(--gradient-glass);
-  border: 1px solid var(--white-10);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
   padding: var(--space-xl) var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.personaImageWrap {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.personaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
 }
 
 .personaCard h4 {
@@ -437,38 +456,28 @@
   color: var(--white);
 }
 
-.personaCard .role {
-  font-size: 0.75rem;
-  color: var(--accent-blue);
-  font-weight: 500;
+.personaTraits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.personaCard .details {
-  font-size: 0.75rem;
-  color: var(--white-40);
-  font-family: var(--font-mono);
-}
-
-.personaCard p {
+.personaTraits li {
   font-size: 0.8125rem;
   color: var(--white-70);
+  padding-left: var(--space-lg);
+  position: relative;
   line-height: 1.5;
 }
 
-.tagRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: var(--space-xs);
-}
-
-.tagRow span {
-  padding: 4px 12px;
-  font-size: 0.65rem;
-  background: var(--white-05);
-  border: 1px solid var(--white-10);
-  border-radius: var(--radius-full);
-  color: var(--white-40);
+.personaTraits li::before {
+  content: '•';
+  position: absolute;
+  left: var(--space-sm);
+  color: var(--accent-green);
 }
 
 /* ---- User Flow Cards ---- */

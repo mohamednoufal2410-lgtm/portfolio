@@ -295,15 +295,15 @@ export default function CaseStudy() {
           <div className={styles.personaGrid}>
             {study.personas.map((p, i) => (
               <div key={i} className={styles.personaCard}>
-                <h4>{p.name}</h4>
-                <span className={styles.role}>{p.title}</span>
-                <span className={styles.details}>Age {p.age} &middot; {p.experience} exp</span>
-                <p>{p.description}</p>
-                <div className={styles.tagRow}>
-                  {p.values.map((v, j) => (
-                    <span key={j}>{v}</span>
-                  ))}
+                <div className={styles.personaImageWrap}>
+                  <img src={p.image} alt={p.title} className={styles.personaImage} />
                 </div>
+                <h4>{p.title}</h4>
+                <ul className={styles.personaTraits}>
+                  {p.traits.map((t, j) => (
+                    <li key={j}>{t}</li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
