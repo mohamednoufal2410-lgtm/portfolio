@@ -89,6 +89,10 @@ function CardBack({ project }) {
           color: 'rgba(255,255,255,0.6)',
           lineHeight: 1.7,
           maxWidth: '380px',
+          overflow: 'hidden',
+          display: '-webkit-box',
+          WebkitLineClamp: 4,
+          WebkitBoxOrient: 'vertical',
         }}
       >
         {project.description}

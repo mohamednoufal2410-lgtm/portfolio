@@ -2,8 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero/Hero';
-import Projects from './components/Projects/Projects';
-import Skills from './components/Skills/Skills';
 import Experience from './components/Experience/Experience';
 import Testimonials from './components/Testimonials/Testimonials';
 import Contact from './components/Contact';
@@ -16,8 +14,6 @@ function HomePage() {
       <Navbar />
       <main>
         <Hero />
-        <Projects />
-        <Skills />
         <Experience />
         <Testimonials />
         <Contact />

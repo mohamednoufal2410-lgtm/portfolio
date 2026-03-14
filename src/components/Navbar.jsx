@@ -14,7 +14,7 @@ import { personal } from '../data/content';
 import MegaMenu from './ui/MegaMenu';
 import styles from '../styles/components/Navbar.module.css';
 
-const sectionItems = ['Skills', 'Experience', 'Testimonials', 'Contact'];
+const sectionItems = ['Experience', 'Testimonials', 'Contact'];
 
 const projectSubMenus = [
   {
@@ -67,10 +67,9 @@ export default function Navbar() {
 
   const megaMenuItems = [
     { id: 1, label: 'Projects', subMenus: projectSubMenus },
-    { id: 2, label: 'Skills', onClick: () => scrollToSection('skills') },
-    { id: 3, label: 'Experience', onClick: () => scrollToSection('experience') },
-    { id: 4, label: 'Testimonials', onClick: () => scrollToSection('testimonials') },
-    { id: 5, label: 'Contact', onClick: () => scrollToSection('contact') },
+    { id: 2, label: 'Experience', onClick: () => scrollToSection('experience') },
+    { id: 3, label: 'Testimonials', onClick: () => scrollToSection('testimonials') },
+    { id: 4, label: 'Contact', onClick: () => scrollToSection('contact') },
   ];
 
   return (

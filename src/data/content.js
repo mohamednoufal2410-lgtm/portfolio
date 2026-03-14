@@ -135,28 +135,32 @@ export const skills = [
 
 export const experience = [
   {
-    role: 'Senior Product Designer',
-    company: 'TechCorp',
-    period: '2023 — Present',
-    location: 'Bangalore, India',
-    description:
-      'Leading design for the flagship product, managing a team of 3 designers, and establishing design system foundations.',
+    company: 'Crion Technologies',
+    role: 'Junior UI UX Designer cum Product Designer',
+    period: 'Aug 2023 – Nov 2024',
+    location: 'IIT-M Research Park, Chennai',
+    projectIds: ['clonos', 'clonos-tablet', 'clonos-digital-twin', 'vr-training-simulator'],
   },
   {
-    role: 'Product Designer',
-    company: 'StartupHub',
-    period: '2021 — 2023',
-    location: 'Remote',
-    description:
-      'Owned end-to-end design for mobile and web applications, from research and wireframes to pixel-perfect handoffs.',
+    company: 'Vyana Wellness',
+    role: 'UI / UX Designer',
+    period: 'Nov 2024 – Mar 2025',
+    location: 'Dubai (Remote)',
+    projectIds: ['taqumart'],
   },
   {
-    role: 'UI/UX Designer',
-    company: 'DesignStudio',
-    period: '2019 — 2021',
-    location: 'Chennai, India',
-    description:
-      'Designed interfaces for 10+ client projects across fintech, healthcare, and e-commerce domains.',
+    company: 'Max 1 Motors',
+    role: 'UI / UX Designer',
+    period: 'Mar 2025 – May 2025',
+    location: 'Dubai (Remote)',
+    projectIds: [],
+  },
+  {
+    company: 'PARIKक्षा Guru',
+    role: 'UI / UX Designer',
+    period: 'Sep 2025 – Nov 2025',
+    location: 'Bangalore',
+    projectIds: ['pariksha-guru-student', 'pariksha-guru-admin'],
   },
 ];
 
