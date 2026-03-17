@@ -448,22 +448,30 @@ export default function CaseStudy() {
             Move your cursor across the image to compare the low-fidelity wireframe with the final UI.
           </p>
 
-          <p style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--white-40)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 'var(--space-sm)' }}>
-            Log Management
-          </p>
-          <BeforeAfterSlider
-            beforeImage="/images/projects/Logs-Wireframe.png"
-            afterImage="/images/projects/Logs-Final.png"
-          />
+          <div className={styles.featureCards}>
+            <div className={styles.featureCard}>
+              <div className={styles.sliderCardLabel}>Log Management</div>
+              <div className={styles.featureCardImage}>
+                <BeforeAfterSlider
+                  beforeImage="/images/projects/Logs-Wireframe.png"
+                  afterImage="/images/projects/Logs-Final.png"
+                  containerStyle={{ marginBottom: 0 }}
+                />
+              </div>
+            </div>
 
-          <p style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--white-40)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 'var(--space-2xl)', marginBottom: 'var(--space-sm)' }}>
-            Dashboard
-          </p>
-          <BeforeAfterSlider
-            beforeImage="/images/projects/Dashboard-Wireframe.png"
-            afterImage="/images/projects/Dashboard-Final.png"
-            objectFit="contain"
-          />
+            <div className={styles.featureCard}>
+              <div className={styles.sliderCardLabel}>Dashboard</div>
+              <div className={styles.featureCardImage}>
+                <BeforeAfterSlider
+                  beforeImage="/images/projects/Dashboard-Wireframe.png"
+                  afterImage="/images/projects/Dashboard-Final.png"
+                  naturalHeight
+                  containerStyle={{ marginBottom: 0 }}
+                />
+              </div>
+            </div>
+          </div>
         </motion.div>
       </motion.section>
 

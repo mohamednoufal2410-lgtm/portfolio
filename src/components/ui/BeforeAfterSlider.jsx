@@ -3,7 +3,7 @@ import styles from './BeforeAfterSlider.module.css';
 
 const SKEW = 8; // diagonal slant in %
 
-export default function BeforeAfterSlider({ beforeImage, afterImage, objectFit = 'cover' }) {
+export default function BeforeAfterSlider({ beforeImage, afterImage, objectFit = 'cover', containerStyle, naturalHeight = false }) {
   const containerRef = useRef(null);
   const beforeWrapRef = useRef(null);
   const svgLineRef = useRef(null);
@@ -83,6 +83,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, objectFit =
     <div
       ref={containerRef}
       className={styles.container}
+      style={naturalHeight ? { height: 'auto', ...containerStyle } : containerStyle}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -90,7 +91,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, objectFit =
       onTouchStart={(e) => applyPosition(((e.touches[0].clientX - containerRef.current.getBoundingClientRect().left) / containerRef.current.getBoundingClientRect().width) * 100)}
     >
       {/* After image — bottom layer */}
-      <img src={afterImage} alt="After" className={styles.image} draggable={false} style={{ objectFit }} />
+      <img src={afterImage} alt="After" className={styles.image} draggable={false} style={naturalHeight ? { width: '100%', height: 'auto', objectFit: 'initial', display: 'block' } : { objectFit }} />
 
       {/* Before image — diagonally clipped */}
       <div ref={beforeWrapRef} className={styles.beforeWrap}>

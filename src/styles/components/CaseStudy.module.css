@@ -842,6 +842,17 @@
   color: var(--white);
 }
 
+.sliderCardLabel {
+  padding: var(--space-lg) var(--space-2xl);
+  border-bottom: 1px solid var(--white-10);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-70);
+}
+
 
 .featureCardDetail {
   display: flex;
@@ -1060,11 +1071,6 @@
 /* ---- Clickable Image ---- */
 .clickableImage {
   cursor: zoom-in;
-  transition: opacity 0.2s ease;
-}
-
-.clickableImage:hover {
-  opacity: 0.85;
 }
 
 /* ---- Lightbox Overlay ---- */
