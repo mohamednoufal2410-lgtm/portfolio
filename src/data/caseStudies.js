@@ -1,6 +1,7 @@
 export const caseStudies = {
   clonos: {
     title: 'CLONOS Desktop Platform',
+    heading: 'Digitizing Asset Management Workflows for Industrial Plant Engineers',
     headline: 'Reducing Unplanned Downtime by 68% Through Intelligent Asset Management',
     heroImage: '/images/projects/clonos.png',
     meta: {

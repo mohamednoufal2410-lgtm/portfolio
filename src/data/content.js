@@ -161,19 +161,19 @@ export const testimonials = [
   {
     quote:
       "Noufal has an extraordinary ability to translate complex requirements into elegant, user-friendly designs. He's the designer every PM dreams of working with.",
-    author: 'Priya Sharma',
-    title: 'Product Manager, TechCorp',
+    author: 'Mohamed Thariff',
+    title: 'Project Manager, Crion Technologies',
   },
   {
     quote:
-      'His attention to detail and deep understanding of user psychology make him stand out. The redesign he led increased our NPS by 20 points.',
-    author: 'Rahul Menon',
-    title: 'Engineering Lead, StartupHub',
+      "What stood out was how quickly he got the context. We didn't have to explain the problem twice — he'd already spotted things we hadn't even noticed.",
+    author: 'Raja Kumar',
+    title: 'Pariksha Guru',
   },
   {
     quote:
-      "Working with Noufal was a game-changer for our product. He doesn't just make things look good — he makes them work beautifully.",
-    author: 'Aisha Khan',
-    title: 'CEO, DesignStudio',
+      "He takes feedback really well and never loses sight of the user. Every revision felt like a step forward, not just a change.",
+    author: 'Vishnuvaradhan',
+    title: 'Crion Technologies',
   },
 ];

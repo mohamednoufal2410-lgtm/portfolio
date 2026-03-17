@@ -122,8 +122,12 @@ export default function CaseStudy() {
         animate="visible"
         variants={stagger}
       >
-        <motion.p className={styles.heroLabel} variants={fadeUp}>Case Study</motion.p>
-        <motion.h1 className={styles.heroTitle} variants={fadeUp}>{study.title}</motion.h1>
+        <motion.p className={styles.heroLabel} variants={fadeUp}>
+          Case Study &nbsp;·&nbsp; {study.title}
+        </motion.p>
+        <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+          {study.heading || study.title}
+        </motion.h1>
         <motion.p className={styles.heroHeadline} variants={fadeUp}>{study.headline}</motion.p>
 
         <motion.div className={styles.heroImage} variants={fadeUp}>
