@@ -13,9 +13,16 @@ export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeIndex, setActiveIndex] = useState(0);
+  const [projectIndex, setProjectIndex] = useState(0);
 
   const active = experience[activeIndex];
   const linkedProjects = projects.filter((p) => active.projectIds.includes(p.id));
+  const currentProject = linkedProjects[projectIndex] || null;
+
+  const handleCompanyChange = (i) => {
+    setActiveIndex(i);
+    setProjectIndex(0);
+  };
 
   return (
     <section id="experience" className={styles.experience} ref={ref}>
@@ -35,56 +42,67 @@ export default function Experience() {
             <button
               key={exp.company}
               className={`${styles.timelineNode} ${i === activeIndex ? styles.active : ''}`}
-              onClick={() => setActiveIndex(i)}
+              onClick={() => handleCompanyChange(i)}
             >
               <span className={styles.nodeDot} />
-              <span className={styles.nodeCompany}>{exp.company}</span>
-              <span className={styles.nodePeriod}>{exp.period}</span>
+              <span className={styles.nodeCompany}>
+                {exp.company} <span className={styles.nodeYear}>{exp.period.match(/\d{4}/g)?.join('–')}</span>
+              </span>
             </button>
           ))}
         </div>
       </motion.div>
 
-      {/* Active Company Details */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeIndex}
-          className={styles.activeCard}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className={styles.activeHeader}>
-            <div>
-              <h3 className={styles.activeRole}>{active.role}</h3>
-              <p className={styles.activeCompany}>{active.company}</p>
-            </div>
-            <div className={styles.activeMeta}>
-              <span className={styles.activePeriod}>{active.period}</span>
-              <span className={styles.activeLocation}>{active.location}</span>
-            </div>
+      {/* Container Card */}
+      <div className={styles.outerCard}>
+        <div className={styles.outerHeader}>
+          <div>
+            <h3 className={styles.outerRole}>{active.role}</h3>
+            <p className={styles.outerCompany}>{active.company}</p>
           </div>
+          <div className={styles.outerMeta}>
+            <span className={styles.outerPeriod}>{active.period}</span>
+            <span className={styles.outerLocation}>{active.location}</span>
+          </div>
+        </div>
 
-          {/* Projects under this company */}
-          {linkedProjects.length > 0 && (
-            <div className={styles.projectsSection}>
-              <p className={styles.projectsLabel}>Projects</p>
-              <div className={styles.projectsGrid}>
-                {linkedProjects.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
-              </div>
+        <div className={styles.projectArea}>
+          {/* Side dots nav */}
+          {linkedProjects.length > 1 && (
+            <div className={styles.sideDots}>
+              {linkedProjects.map((p, i) => (
+                <button
+                  key={p.id}
+                  className={`${styles.sideDot} ${i === projectIndex ? styles.activeDot : ''}`}
+                  onClick={() => setProjectIndex(i)}
+                >
+                  <span className={styles.sideDotTooltip}>{p.title}</span>
+                </button>
+              ))}
             </div>
           )}
 
-          {linkedProjects.length === 0 && (
-            <div className={styles.noProjects}>
-              <p>Projects under NDA — details available on request.</p>
-            </div>
-          )}
-        </motion.div>
-      </AnimatePresence>
+          {/* Project card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${activeIndex}-${projectIndex}`}
+              className={styles.singleProject}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {currentProject ? (
+                <ProjectCard project={currentProject} />
+              ) : (
+                <div className={styles.noProjects}>
+                  <p>Projects under NDA — details available on request.</p>
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
     </section>
   );
 }

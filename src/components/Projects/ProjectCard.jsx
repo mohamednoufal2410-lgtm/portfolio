@@ -67,7 +67,9 @@ function CardBack({ project }) {
         justifyContent: 'center',
         padding: '28px 28px',
         borderRadius: 'var(--radius-lg)',
-        background: 'var(--bg-secondary)',
+        background: 'var(--bg-tertiary)',
+        border: '1px solid var(--glass-02)',
+        boxShadow: 'var(--shadow-elevated)',
         textAlign: 'center',
         gap: '20px',
       }}
@@ -86,7 +88,7 @@ function CardBack({ project }) {
       <p
         style={{
           fontSize: '0.9375rem',
-          color: 'rgba(255,255,255,0.6)',
+          color: 'var(--white-70)',
           lineHeight: 1.7,
           maxWidth: '380px',
           overflow: 'hidden',

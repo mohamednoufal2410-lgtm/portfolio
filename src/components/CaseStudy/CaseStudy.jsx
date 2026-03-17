@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { caseStudies } from '../../data/caseStudies';
+import BeforeAfterSlider from '../ui/BeforeAfterSlider';
 import styles from '../../styles/components/CaseStudy.module.css';
 
 const sectionIds = [
@@ -28,14 +29,31 @@ export default function CaseStudy() {
   const study = caseStudies[slug];
   const [activeSection, setActiveSection] = useState('overview');
   const [lightboxSrc, setLightboxSrc] = useState(null);
+  const [imgScale, setImgScale] = useState(1);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   const sectionRefs = useRef({});
 
-  // Scroll to top on mount
-  useEffect(() => {
+  // Scroll to top before paint when slug changes (useLayoutEffect = before paint, not after)
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
+
+  // Reset zoom when lightbox opens/closes
+  useEffect(() => {
+    setImgScale(1);
+  }, [lightboxSrc]);
+
+  // Non-passive wheel listener for zoom (passive:false needed to preventDefault)
+  useEffect(() => {
+    if (!lightboxSrc) return;
+    const handleWheel = (e) => {
+      e.preventDefault();
+      setImgScale((s) => Math.min(4, Math.max(0.5, s - e.deltaY * 0.001)));
+    };
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, [lightboxSrc]);
 
   // Track active section via IntersectionObserver
   useEffect(() => {
@@ -148,24 +166,6 @@ export default function CaseStudy() {
         </motion.div>
       </motion.header>
 
-      {/* ===== Metrics Strip ===== */}
-      <motion.div
-        className={styles.metricsStrip}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        variants={stagger}
-      >
-        <div className={styles.metricsGrid}>
-          {study.metrics.map((m, i) => (
-            <motion.div key={i} className={styles.metricCard} variants={fadeUp}>
-              <div className={styles.metricValue}>{m.value}</div>
-              <div className={styles.metricLabel}>{m.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
       {/* ===== Overview ===== */}
       <motion.section
         id="overview"
@@ -180,6 +180,7 @@ export default function CaseStudy() {
         <motion.h2 className={styles.sectionTitle} variants={fadeUp}>Project Overview</motion.h2>
         <motion.p className={styles.paragraph} variants={fadeUp}>{study.overview}</motion.p>
         <motion.p className={styles.paragraph} variants={fadeUp}>{study.background}</motion.p>
+
       </motion.section>
 
       <hr className={styles.divider} />
@@ -245,46 +246,60 @@ export default function CaseStudy() {
         <motion.p className={styles.sectionLabel} variants={fadeUp}>Research</motion.p>
         <motion.h2 className={styles.sectionTitle} variants={fadeUp}>Understanding the Users</motion.h2>
 
-        {/* Interviews */}
-        <motion.div variants={fadeUp}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
-            User Interviews ({study.research.interviews.count} participants)
-          </h3>
-          <p className={styles.paragraph}>{study.research.interviews.description}</p>
-          <div className={styles.pullQuote}>
-            <strong style={{ color: 'var(--white)', display: 'block', marginBottom: '8px', fontStyle: 'normal' }}>Key questions we explored:</strong>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        {/* Research Method Cards */}
+        <motion.div className={styles.methodGrid} variants={stagger}>
+
+          {/* Interviews */}
+          <motion.div className={styles.methodCard} variants={fadeUp}>
+            <div className={styles.methodCardHead}>
+              <span className={styles.methodIcon}>◎</span>
+              <div>
+                <h4 className={styles.methodTitle}>User Interviews</h4>
+                <span className={styles.methodMeta}>{study.research.interviews.count} participants</span>
+              </div>
+            </div>
+            <p className={styles.methodDesc}>{study.research.interviews.description}</p>
+            <ul className={styles.methodList}>
               {study.research.interviews.keyQuestions.map((q, i) => (
-                <li key={i} style={{ fontSize: '0.875rem', fontStyle: 'normal' }}>&ldquo;{q}&rdquo;</li>
+                <li key={i}>&ldquo;{q}&rdquo;</li>
               ))}
             </ul>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Contextual Inquiry */}
-        <motion.div variants={fadeUp}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
-            Contextual Inquiry
-          </h3>
-          <p className={styles.paragraph}>{study.research.contextualInquiry.description}</p>
-          <ul className={styles.bulletList}>
-            {study.research.contextualInquiry.observations.map((o, i) => (
-              <li key={i}>{o}</li>
-            ))}
-          </ul>
-        </motion.div>
+          {/* Contextual Inquiry */}
+          <motion.div className={styles.methodCard} variants={fadeUp}>
+            <div className={styles.methodCardHead}>
+              <span className={styles.methodIcon}>◈</span>
+              <div>
+                <h4 className={styles.methodTitle}>Contextual Inquiry</h4>
+                <span className={styles.methodMeta}>Field observation</span>
+              </div>
+            </div>
+            <p className={styles.methodDesc}>{study.research.contextualInquiry.description}</p>
+            <ul className={styles.methodList}>
+              {study.research.contextualInquiry.observations.map((o, i) => (
+                <li key={i}>{o}</li>
+              ))}
+            </ul>
+          </motion.div>
 
-        {/* Market Analysis */}
-        <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-xl)' }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
-            Market Analysis
-          </h3>
-          <p className={styles.paragraph}>{study.research.marketAnalysis.description}</p>
-          <ul className={styles.bulletList}>
-            {study.research.marketAnalysis.findings.map((f, i) => (
-              <li key={i}>{f}</li>
-            ))}
-          </ul>
+          {/* Market Analysis */}
+          <motion.div className={styles.methodCard} variants={fadeUp}>
+            <div className={styles.methodCardHead}>
+              <span className={styles.methodIcon}>◉</span>
+              <div>
+                <h4 className={styles.methodTitle}>Market Analysis</h4>
+                <span className={styles.methodMeta}>Competitive review</span>
+              </div>
+            </div>
+            <p className={styles.methodDesc}>{study.research.marketAnalysis.description}</p>
+            <ul className={styles.methodList}>
+              {study.research.marketAnalysis.findings.map((f, i) => (
+                <li key={i}>{f}</li>
+              ))}
+            </ul>
+          </motion.div>
+
         </motion.div>
 
         {/* Personas */}
@@ -325,57 +340,130 @@ export default function CaseStudy() {
         <motion.p className={styles.sectionLabel} variants={fadeUp}>Design Process</motion.p>
         <motion.h2 className={styles.sectionTitle} variants={fadeUp}>From Research to Solution</motion.h2>
 
+        {/* Happy Paths */}
+        {study.designProcess.happyPaths?.length > 0 && (
+          <motion.div variants={fadeUp}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-md)' }}>
+              Happy Paths
+            </h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)', marginBottom: 'var(--space-2xl)' }}>
+              {study.designProcess.happyPaths.map((label, i) => (
+                <span key={i} style={{
+                  display: 'inline-block',
+                  padding: '8px 18px',
+                  borderRadius: 'var(--radius-full)',
+                  border: '1px solid var(--glass-02)',
+                  background: 'var(--glass-01)',
+                  fontSize: '0.875rem',
+                  color: 'var(--white-70)',
+                  fontFamily: 'var(--font-sans)',
+                }}>
+                  {label}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Information Architecture */}
-        <motion.div variants={fadeUp}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-md)' }}>
-            Information Architecture
-          </h3>
-          <ul className={styles.bulletList}>
-            {study.designProcess.ia.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </motion.div>
-
-        {/* User Flows */}
-        <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-2xl)' }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
-            Key User Flows
-          </h3>
-
-          {study.designProcess.userFlows.map((flow, i) => (
-            <motion.div key={i} variants={fadeUp} style={{ marginTop: i > 0 ? 'var(--space-xl)' : 'var(--space-md)' }}>
-              {flow.image && (
-                <div className={styles.screenCardImage} style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
-                  <img
-                    src={flow.image}
-                    alt={`${flow.title} — user flow`}
-                    style={{ width: '100%', display: 'block' }}
-                    onClick={() => setLightboxSrc(flow.image)}
-                    className={styles.clickableImage}
-                  />
-                </div>
-              )}
-              <p style={{ fontSize: '0.75rem', color: 'var(--white-40)', marginTop: 'var(--space-sm)', textAlign: 'center', fontStyle: 'italic' }}>
-                User flow — {flow.title}
-              </p>
-            </motion.div>
-          ))}
-
-          <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-xl)' }}>
-            <div className={styles.screenCardImage} style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+        {study.designProcess.iaImage && (
+          <motion.div variants={fadeUp}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-md)' }}>
+              Information Architecture
+            </h3>
+            <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'auto', border: '1px solid var(--glass-02)', background: 'var(--glass-01)' }}>
               <img
-                src="/images/projects/Clonos - Create a log user flow.png"
-                alt="Create and assign a log — user flow"
-                style={{ width: '100%', display: 'block' }}
-                onClick={() => setLightboxSrc('/images/projects/Clonos - Create a log user flow.png')}
+                src={study.designProcess.iaImage}
+                alt={`${study.title} — Information Architecture`}
+                style={{ minWidth: '1400px', display: 'block' }}
+                onClick={() => setLightboxSrc(study.designProcess.iaImage)}
                 className={styles.clickableImage}
               />
             </div>
             <p style={{ fontSize: '0.75rem', color: 'var(--white-40)', marginTop: 'var(--space-sm)', textAlign: 'center', fontStyle: 'italic' }}>
-              User flow — Creating and assigning a log
+              Scroll horizontally to explore full architecture &rarr;
             </p>
           </motion.div>
+        )}
+
+        {/* Early Ideation Sketches */}
+        {study.designProcess.ideation?.length > 0 && (
+          <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-2xl)' }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
+              Early Ideation
+            </h3>
+            <div className={styles.ideationGrid}>
+              {study.designProcess.ideation.map((sketch, i) => (
+                <div key={i} className={styles.ideationItem}>
+                  <img
+                    src={sketch.image}
+                    alt={sketch.title}
+                    onClick={() => setLightboxSrc(sketch.image)}
+                    className={styles.clickableImage}
+                    style={{ width: '100%', display: 'block', borderRadius: 'var(--radius-md)' }}
+                  />
+                  <p style={{ fontSize: '0.7rem', color: 'var(--white-40)', marginTop: '8px', textAlign: 'center', fontStyle: 'italic' }}>
+                    {sketch.caption || sketch.title}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* User Flows */}
+        {study.designProcess.userFlows?.length > 0 && (
+          <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-2xl)' }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
+              Key User Flows
+            </h3>
+
+            {study.designProcess.userFlows.map((flow, i) => (
+              <motion.div key={i} variants={fadeUp} style={{ marginTop: i > 0 ? 'var(--space-xl)' : 'var(--space-md)' }}>
+                {flow.image && (
+                  <div className={styles.screenCardImage} style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid var(--glass-02)' }}>
+                    <img
+                      src={flow.image}
+                      alt={flow.caption || flow.title}
+                      style={{ width: '100%', display: 'block' }}
+                      onClick={() => setLightboxSrc(flow.image)}
+                      className={styles.clickableImage}
+                    />
+                  </div>
+                )}
+                <p style={{ fontSize: '0.75rem', color: 'var(--white-40)', marginTop: 'var(--space-sm)', textAlign: 'center', fontStyle: 'italic' }}>
+                  {flow.caption || flow.title}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Wireframe vs Final Design */}
+        <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-2xl)' }}>
+          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-sm)' }}>
+            Wireframe to Final Design
+          </h3>
+          <p style={{ fontSize: '0.875rem', color: 'var(--white-40)', marginBottom: 'var(--space-lg)' }}>
+            Move your cursor across the image to compare the low-fidelity wireframe with the final UI.
+          </p>
+
+          <p style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--white-40)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 'var(--space-sm)' }}>
+            Log Management
+          </p>
+          <BeforeAfterSlider
+            beforeImage="/images/projects/Logs-Wireframe.png"
+            afterImage="/images/projects/Logs-Final.png"
+          />
+
+          <p style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--white-40)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 'var(--space-2xl)', marginBottom: 'var(--space-sm)' }}>
+            Dashboard
+          </p>
+          <BeforeAfterSlider
+            beforeImage="/images/projects/Dashboard-Wireframe.png"
+            afterImage="/images/projects/Dashboard-Final.png"
+            objectFit="contain"
+          />
         </motion.div>
       </motion.section>
 
@@ -397,15 +485,22 @@ export default function CaseStudy() {
         <div className={styles.featureCards}>
           {study.features.map((feat, i) => (
             <motion.div key={i} className={styles.featureCard} variants={fadeUp}>
+              <div className={styles.featureCardHeader}>
+                <h3 className={styles.featureCardTitle}>{feat.title}</h3>
+              </div>
               <div className={styles.featureCardImage}>
-                {feat.image ? (
+                {feat.beforeImage && feat.afterImage ? (
+                  <BeforeAfterSlider
+                    beforeImage={feat.beforeImage}
+                    afterImage={feat.afterImage}
+                  />
+                ) : feat.image ? (
                   <img src={feat.image} alt={feat.title} onClick={() => setLightboxSrc(feat.image)} className={styles.clickableImage} />
                 ) : (
                   <div className={styles.featureCardPlaceholder} />
                 )}
               </div>
               <div className={styles.featureCardBody}>
-                <h3>{feat.title}</h3>
                 <div className={styles.featureCardDetail}>
                   <span className={styles.featureDetailDot} style={{ background: 'var(--accent-red)' }} />
                   <div>
@@ -564,12 +659,22 @@ export default function CaseStudy() {
       {lightboxSrc && (
         <div className={styles.lightboxOverlay} onClick={() => setLightboxSrc(null)}>
           <button className={styles.lightboxClose} onClick={() => setLightboxSrc(null)}>&times;</button>
+          {imgScale !== 1 && (
+            <button
+              className={styles.lightboxReset}
+              onClick={(e) => { e.stopPropagation(); setImgScale(1); }}
+            >
+              {Math.round(imgScale * 100)}% &nbsp;↺
+            </button>
+          )}
           <img
             src={lightboxSrc}
             alt="Zoomed view"
             className={styles.lightboxImage}
             onClick={(e) => e.stopPropagation()}
+            style={{ transform: `scale(${imgScale})`, transformOrigin: 'center center' }}
           />
+          <p className={styles.lightboxHint}>Scroll to zoom</p>
         </div>
       )}
     </div>

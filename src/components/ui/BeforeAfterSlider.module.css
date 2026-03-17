@@ -1,0 +1,82 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-02);
+  cursor: crosshair;
+  user-select: none;
+  touch-action: pan-y;
+  background: var(--bg-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 260px;
+  }
+}
+
+/* Base image (after / final design) */
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  pointer-events: none;
+}
+
+/* Before image — diagonally clipped on top */
+.beforeWrap {
+  position: absolute;
+  inset: 0;
+  transition: clip-path 0.05s linear;
+  will-change: clip-path;
+}
+
+.beforeWrap .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  position: absolute;
+  inset: 0;
+}
+
+/* Diagonal SVG line */
+.dividerSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.dividerLine {
+  stroke: var(--accent-green);
+  stroke-width: 3px;
+}
+
+/* Idle hint */
+.hint {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.65);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 3;
+  opacity: 0.6;
+}

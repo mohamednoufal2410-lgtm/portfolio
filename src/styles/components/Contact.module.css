@@ -28,14 +28,14 @@
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--accent-green);
   padding: var(--space-md) var(--space-xl);
-  border: 1px solid rgba(0, 255, 102, 0.3);
+  border: 1px solid var(--green-alpha-30);
   border-radius: var(--radius-full);
   transition: all var(--duration-normal) var(--ease-out-expo);
   margin-bottom: var(--space-3xl);
 }
 
 .emailLink:hover {
-  background: rgba(0, 255, 102, 0.08);
+  background: var(--green-alpha-08);
   box-shadow: var(--shadow-glow-green);
   transform: translateY(-2px);
 }

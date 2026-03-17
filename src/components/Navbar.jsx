@@ -9,7 +9,10 @@ import {
   GraduationCap,
   ShoppingCart,
   LayoutDashboard,
+  Sun,
+  Moon,
 } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 import { personal } from '../data/content';
 import MegaMenu from './ui/MegaMenu';
 import styles from '../styles/components/Navbar.module.css';
@@ -39,6 +42,7 @@ const projectSubMenus = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -90,24 +94,34 @@ export default function Navbar() {
             <MegaMenu items={megaMenuItems} />
           </div>
 
-          <a
-            href={personal.resumeUrl}
-            className={styles.resumeBtn}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Resume
-          </a>
+          <div className={styles.navActions}>
+            <button
+              className={styles.themeToggle}
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
 
-          <button
-            className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+            <a
+              href={personal.resumeUrl}
+              className={styles.resumeBtn}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
+
+            <button
+              className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </motion.nav>
 

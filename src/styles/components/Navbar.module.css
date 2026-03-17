@@ -12,7 +12,7 @@
   background: rgba(13, 13, 13, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--glass-02);
 }
 
 .inner {
@@ -40,6 +40,12 @@
   align-items: center;
 }
 
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
 /* Resume — secondary ghost button */
 .resumeBtn {
   padding: var(--space-sm) var(--space-lg);
@@ -48,26 +54,64 @@
   font-weight: 500;
   font-size: 0.875rem;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--glass-03);
   transition: all var(--duration-fast) ease;
 }
 
 .resumeBtn:hover {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--white-40);
+  background: var(--white-05);
   transform: translateY(-1px);
 }
 
 /* Resume in mobile menu */
 .resumeBtnMobile {
   padding: var(--space-sm) var(--space-xl);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--glass-03);
   border-radius: var(--radius-full);
   font-size: 1rem !important;
   font-family: var(--font-sans) !important;
   color: var(--white-70) !important;
   margin-top: var(--space-md);
+}
+
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--white-10);
+  color: var(--white-70);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.themeToggle:hover {
+  color: var(--white);
+  border-color: var(--white-40);
+  background: var(--white-05);
+}
+
+/* ---- Light mode navbar overrides ---- */
+:global([data-theme="light"]) .navbar.scrolled {
+  background: rgba(247, 247, 245, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .mobileMenu {
+  background: rgba(247, 247, 245, 0.97);
+}
+
+:global([data-theme="light"]) .mobileMenu a {
+  color: var(--white);
+}
+
+:global([data-theme="light"]) .hamburger span {
+  background: var(--white);
 }
 
 .hamburger {
@@ -121,11 +165,14 @@
 
 @media (max-width: 768px) {
   .navLinks,
-  .resumeBtn {
+  .resumeBtn,
+  .themeToggle {
     display: none;
   }
 
   .hamburger {
     display: flex;
   }
+
+
 }

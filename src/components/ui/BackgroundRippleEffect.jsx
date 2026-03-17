@@ -18,11 +18,11 @@ export function BackgroundCells({ className = '' }) {
           inset: 0,
           pointerEvents: 'none',
           zIndex: 2,
-          background: 'linear-gradient(to bottom, transparent 60%, #0D0D0D 95%, #0D0D0D 100%)',
+          background: 'linear-gradient(to bottom, transparent 60%, var(--bg-primary) 95%, var(--bg-primary) 100%)',
         }}
       />
       {/* Grid */}
-      <Pattern cellBorderColor="rgba(255,255,255,0.08)" />
+      <Pattern cellBorderColor="var(--glass-02)" />
     </div>
   );
 }
@@ -102,7 +102,7 @@ function Cell({ rowIdx, colIdx, clickedCell, setClickedCell, cellBorderColor }) 
         transition={{ duration: 0.5, ease: 'backOut' }}
         animate={controls}
         style={{
-          background: 'rgba(0, 255, 102, 0.15)',
+          background: 'var(--green-alpha-15)',
           width: '100%',
           height: '100%',
         }}

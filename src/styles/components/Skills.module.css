@@ -20,18 +20,18 @@
   text-align: center;
   gap: var(--space-md);
   cursor: default;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--glass-01);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-02);
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg) var(--space-lg);
   transition: all 0.3s ease;
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--glass-02);
+  border-color: var(--glass-03);
   transform: translateY(-4px);
 }
 
@@ -54,6 +54,14 @@
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+}
+
+:global([data-theme="light"]) .image {
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.12));
+}
+
+:global([data-theme="light"]) .card {
+  box-shadow: var(--shadow-card);
 }
 
 /* ---- Text ---- */

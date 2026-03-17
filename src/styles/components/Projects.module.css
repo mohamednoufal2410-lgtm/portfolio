@@ -39,8 +39,8 @@
 .moreButton:hover {
   color: var(--accent-green);
   border-color: var(--accent-green);
-  background: rgba(0, 255, 102, 0.05);
-  box-shadow: 0 0 20px rgba(0, 255, 102, 0.1);
+  background: var(--green-alpha-05);
+  box-shadow: 0 0 20px var(--green-alpha-10);
 }
 
 .moreArrow {

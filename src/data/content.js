@@ -34,7 +34,7 @@ export const projects = [
   {
     id: 'clonos',
     title: 'CLONOS Desktop',
-    heading: 'Reducing Unplanned Downtime by 28% Through Intelligent Asset Management',
+    heading: 'Digitizing Asset Management Workflows for Industrial Plant Engineers',
     platform: 'Desktop',
     description:
       'A comprehensive command center for plant engineers to digitize critical asset management workflows. This platform enabled log creation and management, asset tracking with inventory linking, maintenance scheduling and work order systems.',
@@ -137,29 +137,22 @@ export const experience = [
   {
     company: 'Crion Technologies',
     role: 'Junior UI UX Designer cum Product Designer',
-    period: 'Aug 2023 – Nov 2024',
+    period: 'Aug 2023 – Mar 2026',
     location: 'IIT-M Research Park, Chennai',
     projectIds: ['clonos', 'clonos-tablet', 'clonos-digital-twin', 'vr-training-simulator'],
   },
   {
-    company: 'Vyana Wellness',
+    company: 'Taqumart',
     role: 'UI / UX Designer',
-    period: 'Nov 2024 – Mar 2025',
-    location: 'Dubai (Remote)',
+    period: 'Feb 2025 – Feb 2025',
+    location: 'Remote',
     projectIds: ['taqumart'],
-  },
-  {
-    company: 'Max 1 Motors',
-    role: 'UI / UX Designer',
-    period: 'Mar 2025 – May 2025',
-    location: 'Dubai (Remote)',
-    projectIds: [],
   },
   {
     company: 'PARIKक्षा Guru',
     role: 'UI / UX Designer',
-    period: 'Sep 2025 – Nov 2025',
-    location: 'Bangalore',
+    period: 'Mar 2025 – Apr 2025',
+    location: 'Remote',
     projectIds: ['pariksha-guru-student', 'pariksha-guru-admin'],
   },
 ];

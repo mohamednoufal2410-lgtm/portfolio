@@ -32,7 +32,7 @@ export default function MegaMenu({ items }) {
               padding: '6px 16px',
               fontSize: '0.875rem',
               fontWeight: 500,
-              color: openMenu === navItem.label ? '#fff' : 'rgba(255,255,255,0.5)',
+              color: openMenu === navItem.label ? 'var(--white)' : 'var(--white-40)',
               transition: 'color 0.3s ease',
               background: 'none',
               border: 'none',
@@ -57,7 +57,7 @@ export default function MegaMenu({ items }) {
                   inset: 0,
                   width: '100%',
                   height: '100%',
-                  background: 'rgba(255,255,255,0.08)',
+                  background: 'var(--glass-02)',
                   borderRadius: 99,
                 }}
               />
@@ -84,11 +84,11 @@ export default function MegaMenu({ items }) {
                   transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                   style={{
                     width: 'max-content',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    background: '#0A0A0A',
+                    border: '1px solid var(--glass-02)',
+                    background: 'var(--surface)',
                     padding: '20px',
                     borderRadius: 16,
-                    boxShadow: '0 8px 40px rgba(0,0,0,0.6)',
+                    boxShadow: 'var(--shadow-elevated)',
                   }}
                 >
                   <div style={{ display: 'flex', gap: '36px', flexShrink: 0 }}>
@@ -128,17 +128,17 @@ export default function MegaMenu({ items }) {
                                       iconBox.style.borderColor = 'var(--accent-green)';
                                     }
                                     const desc = e.currentTarget.querySelector('[data-desc]');
-                                    if (desc) desc.style.color = 'rgba(255,255,255,0.7)';
+                                    if (desc) desc.style.color = 'var(--white-70)';
                                   }}
                                   onMouseLeave={(e) => {
                                     const iconBox = e.currentTarget.querySelector('[data-icon-box]');
                                     if (iconBox) {
                                       iconBox.style.background = 'transparent';
-                                      iconBox.style.color = '#fff';
-                                      iconBox.style.borderColor = 'rgba(255,255,255,0.2)';
+                                      iconBox.style.color = 'var(--white)';
+                                      iconBox.style.borderColor = 'var(--glass-04)';
                                     }
                                     const desc = e.currentTarget.querySelector('[data-desc]');
-                                    if (desc) desc.style.color = 'rgba(255,255,255,0.4)';
+                                    if (desc) desc.style.color = 'var(--white-40)';
                                   }}
                                 >
                                   <div
@@ -151,8 +151,8 @@ export default function MegaMenu({ items }) {
                                       alignItems: 'center',
                                       justifyContent: 'center',
                                       borderRadius: 8,
-                                      border: '1px solid rgba(255,255,255,0.2)',
-                                      color: '#fff',
+                                      border: '1px solid var(--glass-04)',
+                                      color: 'var(--white)',
                                       transition: 'all 0.3s ease',
                                     }}
                                   >
@@ -163,7 +163,7 @@ export default function MegaMenu({ items }) {
                                       style={{
                                         fontSize: '0.875rem',
                                         fontWeight: 500,
-                                        color: '#fff',
+                                        color: 'var(--white)',
                                         whiteSpace: 'nowrap',
                                       }}
                                     >
@@ -173,7 +173,7 @@ export default function MegaMenu({ items }) {
                                       data-desc=""
                                       style={{
                                         fontSize: '0.75rem',
-                                        color: 'rgba(255,255,255,0.4)',
+                                        color: 'var(--white-40)',
                                         transition: 'color 0.3s ease',
                                         whiteSpace: 'nowrap',
                                       }}
