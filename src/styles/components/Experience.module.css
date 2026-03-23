@@ -162,64 +162,52 @@
   border-radius: var(--radius-full);
 }
 
-/* ---- Project Area with Side Dots ---- */
-.projectArea {
-  position: relative;
+/* ---- Project Grid ---- */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
 }
 
-.sideDots {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* ---- Page Navigation ---- */
+.pageNav {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--glass-02);
 }
 
-.sideDot {
-  width: 20px;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--glass-02);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 0;
-}
-
-.sideDot:hover,
-.sideDot.activeDot {
-  background: var(--accent-green);
-  width: 28px;
-}
-
-.sideDotTooltip {
-  position: absolute;
-  left: 36px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--bg-tertiary);
+.pageBtn {
+  background: none;
   border: 1px solid var(--glass-02);
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  font-size: 0.7rem;
+  border-radius: var(--radius-full);
+  padding: 8px 20px;
+  font-size: 0.8125rem;
+  font-family: var(--font-mono);
   color: var(--white-70);
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.sideDot:hover .sideDotTooltip {
-  opacity: 1;
+.pageBtn:hover:not(:disabled) {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
 }
 
-/* ---- Single Project Display ---- */
-.singleProject {
-  max-width: 620px;
-  margin: 0 auto;
+.pageBtn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.pageCount {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--white-40);
+  min-width: 40px;
+  text-align: center;
 }
 
 .noProjects {
@@ -258,31 +246,12 @@
     min-width: 100px;
   }
 
-  .projectArea {
-    flex-direction: column;
+  .projectGrid {
+    grid-template-columns: 1fr;
   }
 
-  .sideDots {
-    flex-direction: row;
+  .pageNav {
     justify-content: center;
-  }
-
-  .sideDot {
-    width: 6px;
-    height: 20px;
-  }
-
-  .sideDot:hover,
-  .sideDot.activeDot {
-    width: 6px;
-    height: 28px;
-  }
-
-  .sideDotTooltip {
-    left: 50%;
-    top: auto;
-    bottom: calc(100% + 8px);
-    transform: translateX(-50%);
   }
 
   .outerHeader {

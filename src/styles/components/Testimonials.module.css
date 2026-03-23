@@ -15,6 +15,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-02);
+  border-top: 3px solid transparent;
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   display: flex;
@@ -25,14 +26,24 @@
 
 .card:hover {
   background: var(--glass-02);
-  border-color: var(--glass-03);
   transform: translateY(-4px);
 }
 
+.card:nth-child(1) { border-top-color: var(--accent-purple); }
+.card:nth-child(1) .quoteIcon { color: var(--accent-purple); }
+.card:nth-child(1):hover { box-shadow: 0 8px 32px rgba(139,92,246,0.12); }
+
+.card:nth-child(2) { border-top-color: var(--accent-blue); }
+.card:nth-child(2) .quoteIcon { color: var(--accent-blue); }
+.card:nth-child(2):hover { box-shadow: 0 8px 32px rgba(77,91,255,0.12); }
+
+.card:nth-child(3) { border-top-color: var(--accent-yellow); }
+.card:nth-child(3) .quoteIcon { color: var(--accent-yellow); }
+.card:nth-child(3):hover { box-shadow: 0 8px 32px rgba(240,141,50,0.12); }
+
 .quoteIcon {
   font-size: 2rem;
-  color: var(--accent-purple);
-  opacity: 0.6;
+  opacity: 0.75;
   line-height: 1;
 }
 

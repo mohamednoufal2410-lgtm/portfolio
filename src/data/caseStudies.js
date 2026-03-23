@@ -3,6 +3,7 @@ export const caseStudies = {
     title: 'CLONOS Desktop Platform',
     heading: 'Digitizing Asset Management Workflows for Industrial Plant Engineers',
     headline: 'Reducing Unplanned Downtime by 68% Through Intelligent Asset Management',
+    prototypeUrl: 'https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/8vmjoBfUc4xVB5eGMq0Da3/CLONOS-Developer-s-Space-1?node-id=54699-186604&viewport=2410%2C1502%2C0.15&t=Wy9NRi5a5mmZK9za-0&scaling=contain&content-scaling=fixed&starting-point-node-id=54699%3A186604',
     heroImage: '/images/projects/clonos.png',
     meta: {
       role: 'UI/UX Designer',
@@ -11,10 +12,55 @@ export const caseStudies = {
       team: 'Cross-functional: Engineering, Product, Business',
       tools: ['Figma', 'Miro'],
     },
+    summary:
+      'Designed end-to-end UX for CLONOS Desktop — transforming paper-based industrial maintenance workflows into a real-time digital system that reduced unplanned downtime by 68% and drove 85% user adoption across plant sites.',
+    myRole: {
+      description:
+        'I was the sole UX designer on this project, owning the full design process from discovery research through final developer handoff. I collaborated closely with the product manager to define scope and worked directly with frontend engineers during implementation.',
+      responsibilities: [
+        'User Research & Interviews',
+        'Information Architecture',
+        'Wireframing & Prototyping',
+        'Visual Design System',
+        'Stakeholder Presentations',
+        'Developer Handoff',
+      ],
+    },
     overview:
       'I led the design of a comprehensive desktop platform that digitized critical workflows for plant engineers, transforming paper-based processes into a streamlined digital system that improved asset reliability and optimized maintenance operations.',
     background:
       'CLONOS is an Enterprise Asset Management company delivering IoT-driven predictive maintenance and real-time monitoring solutions. The desktop platform serves as the command center for plant engineers, enabling them to manage assets, schedule maintenance, and optimize processes using predictive analytics.',
+    context: {
+      headline: 'How industrial plant maintenance works today',
+      description: 'In manufacturing and process plants, engineers depend on manual rounds and paper-based logs to track the health of hundreds of critical assets — motors, pumps, compressors, and control valves.',
+      currentReality: [
+        'Operators walk rounds every 4–8 hours, filling paper checklists by hand',
+        'Engineers collect sheets and manually transcribe readings into spreadsheets',
+        'Maintenance is scheduled on fixed calendar intervals, not actual asset condition',
+        'When something breaks, root cause is traced through stacks of paper logs',
+      ],
+      contextCard: {
+        title: 'A typical maintenance day at a plant',
+        items: [
+          { label: 'Asset Monitoring', value: 'Manual rounds every shift' },
+          { label: 'Log Method', value: 'Paper checklists + clipboard' },
+          { label: 'Data Entry', value: 'Manual Excel transcription' },
+          { label: 'Work Orders', value: 'Verbal + written handoffs' },
+          { label: 'Alert System', value: 'None — reactive only' },
+        ],
+        note: 'All of this coordination happens through paper, phone calls, and spreadsheets.',
+      },
+      comparison: {
+        before: 'What engineers experienced',
+        after: 'What they actually needed',
+        rows: [
+          { before: 'Paper logs with no timestamps or traceability', after: 'Real-time digital entries with location and time stamps' },
+          { before: 'No visibility into which assets were at risk', after: 'A live dashboard showing asset health at a glance' },
+          { before: 'Maintenance on fixed schedules regardless of condition', after: 'Predictive alerts triggered by actual sensor thresholds' },
+          { before: 'Work orders communicated verbally or on scraps of paper', after: 'Digital work orders with full assignment and audit trail' },
+        ],
+      },
+    },
     problemIntro:
       'Engineers at industrial plants were struggling with inefficient paper-based systems for managing critical asset maintenance. This created several problems:',
     painPoints: [
@@ -22,6 +68,15 @@ export const caseStudies = {
         title: 'Manual Data Collection',
         description:
           'Paper logs were time-consuming and error-prone. Engineers received paper logs from operators and had to manually transcribe data into spreadsheets with no real-time visibility.',
+        issues: [
+          'Operators fill paper checklists on rounds, then hand them to engineers for manual transcription',
+          'No timestamps or verification — entries could be backdated or left incomplete without any system catching it',
+        ],
+        resultsIn: [
+          'Engineers spent 3–4 hours daily on data entry instead of actual engineering and decision-making',
+          'Critical asset anomalies went unnoticed until the next manual round, hours later',
+        ],
+        linkedFeatureIndex: 0,
       },
       {
         title: 'Lack of Accountability',
@@ -39,6 +94,7 @@ export const caseStudies = {
           'Information scattered across paper records, spreadsheets, and emails. Difficult to get complete asset history or identify trends. Audit preparation was a nightmare.',
       },
     ],
+    hmwStatement: 'How might we digitize and unify the entire asset maintenance workflow for plant engineers and operators so that data collection, task accountability, predictive maintenance, and audit readiness all live in one intelligent system — eliminating the inefficiency, errors, and blind spots of paper-based operations?',
     goals: [
       'Digitize log creation and submission processes',
       'Implement verification systems for task completion',
@@ -120,14 +176,58 @@ export const caseStudies = {
         ],
       },
     ],
+    designPhases: [
+      {
+        phase: 'Empathize',
+        accent: 'blue',
+        activities: [
+          'User research with 12 plant engineers',
+          'Market research across EAM platforms',
+          'User persona — pain points, frustrations & needs',
+          'User journey mapping across maintenance workflows',
+        ],
+      },
+      {
+        phase: 'Define',
+        accent: 'purple',
+        activities: [
+          'Competitor analysis of existing EAM tools',
+          'Synthesising research into core problem statements',
+          'Identifying critical gaps in current workflows',
+        ],
+      },
+      {
+        phase: 'Ideate',
+        accent: 'yellow',
+        activities: [
+          'User flows for all primary scenarios',
+          'Storyboarding key operator and engineer journeys',
+          'Information architecture for the full platform',
+        ],
+      },
+      {
+        phase: 'Prototype',
+        accent: 'green',
+        activities: [
+          'Paper wireframes for rapid concept validation',
+          'Low-fidelity design & interactive prototype',
+          'High-fidelity design across all 10+ modules',
+        ],
+      },
+      {
+        phase: 'Test',
+        accent: 'pink',
+        activities: [
+          'Internal usability testing with the product team',
+          'External testing with plant engineers at ONGC',
+          'Iterative refinement based on session findings',
+        ],
+      },
+    ],
     designProcess: {
-      happyPaths: [
-        'Creating a log and reviewing it',
-        'Reusable templates',
-        'Predictive maintenance',
-        'Tracking parameters',
-        'Creating workorders',
-        'Import 3D elements into Digital twin',
+      wireframes: [
+        { label: 'Log Management', wireframeImage: '/images/projects/Logs-Wireframe.png', finalImage: '/images/projects/Logs-Final.png' },
+        { label: 'Dashboard', wireframeImage: '/images/projects/Dashboard-Wireframe.png', finalImage: '/images/projects/Dashboard-Final.png' },
       ],
       iaImage: '/images/projects/MAMS System.png',
       ia: [
@@ -142,18 +242,6 @@ export const caseStudies = {
         { title: 'Whiteboard Session 1', caption: 'Early sketching — mapping the log entry structure and field relationships', image: '/images/projects/Whiteboard Logs 1.jpg' },
         { title: 'Whiteboard Session 2', caption: 'Exploring submission states, engineer review flow, and escalation paths', image: '/images/projects/Whiteboard Logs 2.jpg' },
         { title: 'Whiteboard Session 3', caption: 'Refining the task assignment loop and operator acknowledgement model', image: '/images/projects/Whiteboard Logs 3.jpg' },
-      ],
-      userFlows: [
-        {
-          title: 'Work Order Flow',
-          caption: 'How a maintenance work order is created, assigned to a technician, and closed',
-          image: '/images/projects/Clonos - work order flow.png',
-        },
-        {
-          title: 'Log Creation Flow',
-          caption: 'End-to-end journey — operator submits a log, engineer reviews, and the record is filed',
-          image: '/images/projects/Clonos Log Complete flow.png',
-        },
       ],
     },
     features: [
@@ -189,7 +277,6 @@ export const caseStudies = {
     results: {
       adoption: [
         { value: '68%', label: 'Reduction in unplanned downtime' },
-        { value: '40%', label: 'Decrease in maintenance costs' },
         { value: '75%', label: 'Reduction in log processing time' },
         { value: '85%', label: 'Of engineers actively using platform' },
         { value: '100%', label: 'Reduction in paper-based processes' },
@@ -234,6 +321,23 @@ export const caseStudies = {
         'A more structured onboarding experience to accelerate adoption',
       ],
     },
+    nextSteps: {
+      description: 'Post-launch feedback and usage data revealed clear opportunities to improve and expand the platform further.',
+      items: [
+        {
+          title: 'Mobile Companion App',
+          description: 'Engineers need quick access on the plant floor without going to a desktop terminal. A lightweight mobile view for alerts, task updates, and equipment scanning is the next design priority.',
+        },
+        {
+          title: 'AI-Powered Predictions',
+          description: 'Surface predictive maintenance recommendations directly inside the work order flow — proactively flagging at-risk assets before failure occurs rather than reacting after the fact.',
+        },
+        {
+          title: 'Role-Based Dashboards',
+          description: 'Tailor the dashboard experience for different user types — plant manager vs. field technician — so each role surfaces only the KPIs most relevant to their daily decisions.',
+        },
+      ],
+    },
     ecosystem: {
       description: 'This desktop platform was part of a larger asset management ecosystem:',
       platforms: [
@@ -250,19 +354,69 @@ export const caseStudies = {
 
   'clonos-tablet': {
     title: 'CLONOS Tablet Platform',
-    headline: 'Empowering Field Workers with Multilingual, Touch-First Data Collection',
+    headline: 'Empowering Field Workers with AR-Guided, Touch-First Data Collection',
     heroImage: '/images/projects/clonos Tablet.png',
+    prototypes: [
+      { label: 'Log Submission Flow', url: 'https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/MTfbILa2tMwsjGsyMAWgBs/Portfolio-Prototype?node-id=2-6169%26scaling=contain%26content-scaling=fixed%26starting-point-node-id=2%3A6169' },
+      { label: 'AR SOP Flow', url: 'https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/MTfbILa2tMwsjGsyMAWgBs/Portfolio-Prototype?node-id=1-13929%26scaling=contain%26content-scaling=fixed%26starting-point-node-id=1%3A13929' },
+      { label: 'Work Order Flow', url: 'https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/MTfbILa2tMwsjGsyMAWgBs/Portfolio-Prototype?node-id=1-11475%26scaling=contain%26content-scaling=fixed%26starting-point-node-id=1%3A11475' },
+    ],
     meta: {
       role: 'Product Designer / UI/UX Designer',
       duration: '6 months',
       platform: 'Tablet (Android / iOS)',
       team: 'Cross-functional: Field Operators, Engineering, Developers, Training',
-      tools: ['Figma', 'Maze'],
+      tools: ['Figma', 'Mural', 'Miro'],
+    },
+    myRole: {
+      description:
+        'I was the sole designer on the tablet product, owning end-to-end design from field research through developer handoff. I conducted on-site observations with operators in real industrial conditions and iterated based on what actually worked on the floor.',
+      responsibilities: [
+        'User Research',
+        'Field Observation',
+        'Interaction Design',
+        'Visual Design',
+        'Accessibility Design',
+        'Developer Handoff',
+      ],
     },
     overview:
       'Designed a tablet-based platform for field operators and maintenance personnel to complete assigned tasks, submit logs, and update maintenance records directly from industrial environments.',
     background:
       'Part of the CLONOS Enterprise Asset Management ecosystem that transformed paper-based field operations into streamlined digital workflows, eliminating manual processes and improving data accuracy across facilities.',
+    currentProcess: {
+      headline: 'Why paper-based field operations had to change',
+      logFlow: {
+        label: 'The data logging problem — every reading entered twice',
+        steps: [
+          {
+            image: '/images/projects/Log book.png',
+            label: 'Paper Logbook',
+            caption: 'Step 1 — Written by hand during rounds',
+            description: 'Operators fill checklists manually during every shift round. Entries are handwritten, undated, and impossible to verify or audit remotely.',
+          },
+          {
+            image: '/images/projects/Excel Logbook.png',
+            label: 'Excel Transcription',
+            caption: 'Step 2 — Re-entered into spreadsheets',
+            description: 'Engineers collect the paper sheets and manually re-key the same data into Excel — every reading entered twice, every single day.',
+          },
+        ],
+      },
+      sopProblem: {
+        image: '/images/projects/SOP Book.png',
+        label: 'The SOP problem — a separate issue entirely',
+        description: 'When machinery needs repair or maintenance, operators are handed a thick physical SOP manual. These books are entirely text-based — no visuals, no diagrams, no step-by-step guidance. In a noisy, high-pressure industrial environment, no operator has the time or the ability to flip through dense pages to find the right procedure. Most don\'t bother.',
+        solution: 'Going digital means SOPs become interactive — step-by-step with 3D models, AR overlays, and embedded video guides. Operators can see exactly what needs to be done, not just read about it.',
+      },
+      insight: 'Every data point is entered twice — once on paper, once in Excel. And when something breaks, operators are handed a book of text and expected to figure it out.',
+      digitalShift: [
+        'One entry, submitted instantly from the tablet — no paper, no re-transcription',
+        'SOPs become interactive: step-by-step guidance with 3D models and procedure videos',
+        'On-demand video guides replace hours of classroom training — operators learn by doing',
+        'Engineers verify submissions in real time with automatic timestamps and operator attribution',
+      ],
+    },
     problemIntro:
       'Field operators struggled with inefficient paper-based systems that created barriers to effective maintenance execution and data accuracy.',
     painPoints: [
@@ -334,33 +488,24 @@ export const caseStudies = {
     },
     personas: [
       {
-        title: 'Experienced Operator',
-        image: '/images/projects/tablet-persona-operator.png',
+        title: 'Operator',
+        image: '/images/projects/Operator.png',
         traits: [
-          '15+ years of field experience',
+          'Varies from 2 to 15+ years of field experience',
           'Minimal digital tool usage',
-          'Completes full rounds before documenting',
-          'Relies on muscle memory',
+          'May be a non-native language speaker',
+          'Needs visual confirmation before submitting logs',
+          'Completes rounds before documenting',
         ],
       },
       {
-        title: 'Multilingual Junior Operator',
-        image: '/images/projects/tablet-persona-junior.png',
+        title: 'Plant Engineer',
+        image: '/images/projects/Engineer Image.png',
         traits: [
-          '2–3 years of experience',
-          'Non-native language speaker',
-          'Seeks visual confirmation of actions',
-          'Frequently checks with colleagues',
-        ],
-      },
-      {
-        title: 'Maintenance Technician',
-        image: '/images/projects/tablet-persona-technician.png',
-        traits: [
-          'Technical background',
-          'Works across multiple areas',
-          'Documents issues with photos',
-          'Operates under time pressure',
+          'Reviews and verifies logs submitted by operators',
+          'Flags incomplete or suspicious entries',
+          'Needs full traceability — who submitted, when, and where',
+          'Acts on field data to raise work orders',
         ],
       },
     ],
@@ -372,82 +517,62 @@ export const caseStudies = {
         'Help — Language Toggle, Tooltips, Reference Materials',
         'Profile — Language Preference, Settings',
       ],
-      userFlows: [
+      wireframes: [
         {
-          title: 'Log Submission Flow',
-          caption: 'Step-by-step: how a field operator completes and submits a log from the plant floor',
-          image: '/images/projects/tablet-log-flow.png',
-        },
-        {
-          title: 'AR Tab Flow',
-          caption: 'Tab navigation and AR-assisted data entry across the tablet interface',
-          image: '/images/projects/AR Tab flow.png',
+          label: 'Logs — Tablet',
+          wireframeImage: '/images/projects/Logs Tablet -Wireframe.png',
+          finalImage: '/images/projects/Logs Tablet -Final.png',
         },
       ],
     },
     features: [
       {
         title: 'Simplified Log Entry',
-        problem: 'Paper logs were time-consuming, error-prone, and required manual transcription after operators completed their rounds.',
-        solution: 'Streamlined digital forms with minimal typing, pre-populated fields based on context, visual guidance for numerical ranges, and inline validation.',
-        impact: 'Reduced log completion time by 40%, eliminated transcription errors, and significantly improved data accuracy.',
-        image: '/images/projects/tablet-log-entry.png',
+        problem: 'Paper logs were time-consuming, error-prone, and required manual transcription after operators completed their rounds. There was no visibility into overdue or pending logs.',
+        solution: 'A structured log list showing each entry with real-time status tags — Scheduled, Overdue, Revised — and a countdown timer so operators always know what needs attention. QR scan and Sync Now keep data instantly up to date.',
+        impact: 'Reduced log completion time by 40%, eliminated transcription errors, and gave engineers real-time visibility into submission status across the plant floor.',
+        image: '/images/projects/Logs Tablet.gif',
       },
       {
-        title: 'Multilingual Support',
-        problem: 'Language barriers created comprehension issues and reduced confidence among the diverse workforce.',
-        solution: 'Native language toggle in main navigation with a fully translated interface, consistent terminology across all languages, and regional number formatting.',
-        impact: 'Increased adoption among non-native speakers, reduced errors from misunderstood instructions, improved workforce inclusion.',
-        image: '/images/projects/tablet-multilingual.png',
-      },
-      {
-        title: 'Contextual Help System',
-        problem: 'Varying technical experience meant users needed different levels of guidance without disrupting their active workflow.',
-        solution: 'Toggleable sidebar tooltips, visual walkthroughs for complex tasks, context-sensitive help based on the current screen, and quick access to reference materials.',
-        impact: 'Reduced training time, increased user confidence, and enabled self-service problem solving in the field.',
-        image: '/images/projects/tablet-help-system.png',
+        title: 'AR Model Based Help System',
+        problem: 'Operators faced uncertainty during maintenance tasks with no visual guidance — text-based SOPs were impractical and rarely referenced in the field.',
+        solution: 'Point the tablet camera at any asset and scan its QR code to instantly pull up AR-guided maintenance procedures, 3D model overlays, and embedded video references — all in the live camera view without leaving the workflow.',
+        impact: 'Eliminated dependency on physical SOP manuals, significantly cut on-site training time, and gave operators the confidence to handle complex procedures independently.',
+        image: '/images/projects/AR SOP Tablet.gif',
       },
       {
         title: 'Work Order Management',
-        problem: 'Operators had delayed awareness of assigned tasks and unclear step-by-step guidance, leading to inefficient and inconsistent execution.',
-        solution: 'Clear visualisation of assigned tasks, step-by-step procedure guidance, visual confirmation of completed steps, and simplified photo documentation.',
-        impact: 'Improved task completion efficiency, ensured consistent procedure execution, and enhanced documentation quality.',
-        image: '/images/projects/tablet-work-orders.png',
-      },
-      {
-        title: 'High-Contrast Industrial Design',
-        problem: 'Outdoor lighting conditions and dirty screens made standard interfaces nearly unreadable in real field conditions.',
-        solution: 'Large touch targets designed for gloved operation, a high-contrast colour palette, typography optimised for outdoor readability, and minimal reliance on audio feedback.',
-        impact: 'Maintained full usability in challenging environments, reduced interaction errors, and supported gloved operation without friction.',
-        image: '/images/projects/tablet-high-contrast.png',
+        problem: 'Operators had no structured view of assigned tasks — work orders were communicated verbally or on paper with no step-by-step guidance, parts list, or accountability trail.',
+        solution: 'Detailed digital work orders with priority tags, step-by-step task breakdowns, parts required and replaced tracking, tools needed, and attached documents — all in one place with assignee and team visibility.',
+        impact: 'Improved task completion consistency, ensured every procedure was followed in the correct sequence, and created a full digital audit trail for every work order executed.',
+        image: '/images/projects/Work order.gif',
       },
     ],
     results: {
       adoption: [
         { value: '40%', label: 'Reduction in task completion time' },
         { value: '100%', label: 'Elimination of manual transcription errors' },
-        { value: '3×', label: 'Increase in multilingual user adoption' },
         { value: '100%', label: 'Timestamped verification on all submissions' },
         { value: '60%', label: 'Reduction in onboarding and training time' },
-        { value: 'Real-time', label: 'Field task visibility for engineering teams' },
+        { value: 'Live', label: 'Field task visibility for engineering teams' },
       ],
     },
     testimonials: [
-      {
-        quote: 'The language support made a huge difference. I finally feel confident submitting logs without worrying I misunderstood something.',
-        author: 'Field Operator',
-        company: 'Manufacturing Facility',
-      },
       {
         quote: 'What used to take half an hour on paper now takes five minutes. The pre-filled fields and simple forms are exactly what we needed.',
         author: 'Maintenance Technician',
         company: '',
       },
+      {
+        quote: 'The AR guidance is a game changer. I can scan the asset and know exactly what to do without flipping through any manual.',
+        author: 'Field Operator',
+        company: 'Manufacturing Facility',
+      },
     ],
     learnings: {
       worked: [
         { title: 'Design for the Least Confident', description: 'Designing for the least technically confident users improved the experience for everyone — not just the struggling minority.' },
-        { title: 'Native Language Support', description: 'Language support dramatically increased both adoption rates and data quality across the entire workforce.' },
+        { title: 'AR as a Training Replacement', description: 'Embedding AR guidance directly into the workflow reduced the need for formal training sessions and gave operators confidence on the floor.' },
         { title: 'Field Testing', description: 'Shadowing operators in actual industrial environments revealed critical requirements that lab testing would never have surfaced.' },
         { title: 'Simplicity Over Features', description: 'Simplified, focused interactions consistently proved more valuable than feature richness for this user base.' },
       ],
@@ -457,9 +582,9 @@ export const caseStudies = {
         { title: 'Gloved Touch Interactions', description: 'Creating effective touch interactions that worked reliably with industrial gloves and in varied body positions required significant iteration.' },
       ],
       differently: [
-        'Would have conducted more extensive multilingual user testing earlier in the process',
+        'Would have prototyped the AR guidance flow earlier to validate the QR scan interaction with real operators',
         'Would have prototyped offline synchronisation scenarios more thoroughly before finalising the design',
-        'Would have explored voice input as an option for hands-free data entry in high-noise environments',
+        'Would have integrated multilingual support directly into the AR guidance system — so operators could receive step-by-step procedure instructions in their native language overlaid on the asset, rather than it being a separate consideration.',
       ],
     },
     ecosystem: {
@@ -481,11 +606,23 @@ export const caseStudies = {
     headline: 'Helping Plant Workers Practice Daily Operations and Emergency Scenarios Safely Before Stepping onto the Plant Floor',
     heroImage: '/images/projects/vr-training-simulator.png',
     meta: {
-      role: 'Product Designer / UI/UX Designer (VR Interface Design)',
-      duration: '7 months',
-      platform: 'VR — Meta Quest 3',
+      role: 'Product Designer / UI/UX Designer',
+      duration: '4 months',
+      platform: 'Meta Quest 3',
       team: 'Cross-functional: Training Specialists, VR Developers, Plant Operators, Business',
       tools: ['Figma', 'Miro', 'Google Sheets'],
+    },
+    myRole: {
+      description:
+        'I designed the full VR user interface and interaction model for the Meta Quest 3 platform, working closely with Unity developers to translate Figma designs into immersive VR interactions. I owned the full design process from research through developer handoff.',
+      responsibilities: [
+        'VR Interface Design',
+        'Interaction Design',
+        'User Research',
+        'Usability Testing',
+        'Scenario Design',
+        'Developer Handoff',
+      ],
     },
     overview:
       'Designed a Virtual Reality training simulator for Meta Quest 3 that allows plant workers to practise daily operations and emergency scenarios in a safe, immersive environment before stepping onto the actual plant floor — enabling them to make mistakes and learn at their own pace.',
@@ -601,13 +738,6 @@ export const caseStudies = {
         'Progress — Performance Records, Completion History, Skill Tracking',
         'Trainer Dashboard — Scenario Controls, Trainee Management, Custom Triggers',
       ],
-      userFlows: [
-        {
-          title: 'Emergency Response Training Flow',
-          caption: 'Trainee path through a simulated emergency — from scenario trigger to debrief',
-          image: '/images/projects/vr-training-flow.png',
-        },
-      ],
     },
     features: [
       {
@@ -618,10 +748,10 @@ export const caseStudies = {
         image: '/images/projects/vr-plant-environment.png',
       },
       {
-        title: 'Glassmorphic Interface Design',
+        title: 'Transparent HUD Interface',
         problem: 'Traditional VR interfaces were intrusive and obstructed the operator\'s view, making it difficult to focus on training content and scenarios.',
-        solution: 'Semi-transparent, see-through UI elements present without obstructing the complete view, with contextual information panels appearing only when needed and minimal visual clutter.',
-        impact: 'Operators responded very positively to the new experience, maintaining full focus on training content while keeping necessary information accessible.',
+        solution: 'Semi-transparent, see-through HUD elements that stay present without obstructing the view, with contextual information panels appearing only when needed and minimal visual clutter.',
+        impact: 'Operators responded very positively to the experience, maintaining full focus on the training environment while keeping necessary information accessible at all times.',
         image: '/images/projects/vr-glassmorphic-ui.png',
       },
       {
@@ -670,7 +800,7 @@ export const caseStudies = {
     ],
     learnings: {
       worked: [
-        { title: 'Glassmorphic Design', description: 'The see-through interface approach was highly effective — operators loved that the UI never blocked their view of the training environment.' },
+        { title: 'Transparent HUD Design', description: 'The see-through HUD approach was highly effective — operators loved that the interface never blocked their view of the training environment.' },
         { title: 'Minimal UI', description: 'Keeping interface elements minimal kept full focus on training content rather than the interface itself, which translated directly to better learning outcomes.' },
         { title: 'Trainer Control', description: 'Giving trainers real-time control over emergency scenarios allowed customised, progressively difficult training that adapted to each operator\'s pace.' },
         { title: 'Multimodal Feedback', description: 'Visual, audio, and haptic feedback combined significantly improved learning outcomes, especially for operators who struggled with text-heavy instruction.' },
@@ -705,12 +835,25 @@ export const caseStudies = {
     title: 'CLONOS Digital Twin Platform',
     headline: 'Enabling Engineers to Monitor and Control Physical Plant Operations Remotely Through a Real-Time 3D Digital Replica',
     heroImage: '/images/projects/clonos Digital Twin.png',
+    prototypeUrl: 'https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/MTfbILa2tMwsjGsyMAWgBs/Portfolio-Prototype?node-id=13-8028%26scaling=contain%26content-scaling=fixed%26starting-point-node-id=13%3A8028',
     meta: {
       role: 'Product Designer / UI/UX Designer',
       duration: '12 months',
       platform: 'Web + Desktop',
       team: 'Cross-functional: Engineering, Product, Data Team, Business',
       tools: ['Figma', 'Miro', 'Google Sheets'],
+    },
+    myRole: {
+      description:
+        'I led the UX design for the Digital Twin platform, translating complex real-time engineering data into an intuitive visual interface. I worked alongside the data team and engineers to ensure every design decision supported real operational workflows and remote monitoring needs.',
+      responsibilities: [
+        'UX Research',
+        'Information Architecture',
+        'Data Visualisation Design',
+        'Interaction Design',
+        'Visual Design',
+        'Developer Handoff',
+      ],
     },
     overview:
       'The Digital Twin Platform converts physical plant assets into 3D models placed in an immersive virtual environment, replicating real-world operations in real-time through DCS and sensor connections — enabling remote monitoring and control from anywhere in the world.',
@@ -787,18 +930,8 @@ export const caseStudies = {
     },
     personas: [
       {
-        title: 'Digital Twin Operator',
-        image: '/images/projects/dt-persona-operator.png',
-        traits: [
-          'Takes virtual walkthrough of the plant',
-          'Monitors assets and alerts remotely',
-          'Manages multiple facilities from one location',
-          'Assigns field operators when physical intervention is needed',
-        ],
-      },
-      {
-        title: 'Plant Operations Manager',
-        image: '/images/projects/dt-persona-manager.png',
+        title: 'Plant Manager',
+        image: '/images/projects/Plant Manager.png',
         traits: [
           'Oversees all logging and maintenance tasks',
           'Tracks asset productivity and health remotely',
@@ -807,17 +940,18 @@ export const caseStudies = {
         ],
       },
       {
-        title: 'Field Operator',
-        image: '/images/projects/dt-persona-field.png',
+        title: 'Digital Twin Operator',
+        image: '/images/projects/Digital Twin Operator Image.png',
         traits: [
-          'Receives assignments from Digital Twin team',
-          'Performs physical maintenance when remote resolution fails',
-          'Updates task status in the integrated system',
-          'Limited digital monitoring access while in the field',
+          'Takes virtual walkthrough of the plant',
+          'Monitors assets and alerts remotely',
+          'Manages multiple facilities from one location',
+          'Assigns field operators when physical intervention is needed',
         ],
       },
     ],
     designProcess: {
+      iaImage: '/images/projects/CLONOS - DT.png',
       ia: [
         'Dashboard — Plant Overview, Active Alerts, Asset Health Summary',
         '3D Plant View — Asset Walkthrough, Status Indicators, Layer Controls',
@@ -825,12 +959,20 @@ export const caseStudies = {
         'Simulation — DWSIM Integration, Process Optimisation, What-if Scenarios',
         'Work Orders — Remote Assignment, Field Operator Coordination, Status Tracking',
       ],
-      userFlows: [
+      wireframes: [
         {
-          title: 'Alert to Resolution Flow',
-          image: '/images/projects/dt-alert-flow.png',
+          label: 'Digital Twin',
+          wireframeImage: '/images/projects/DT-Wireframe.png',
+          finalImage: '/images/projects/DT-Final.png',
         },
       ],
+      iterationSlider: {
+        label: 'Design Iteration — V1 to V4',
+        beforeImage: '/images/projects/DT V-1.png',
+        afterImage: '/images/projects/DT V-4.png',
+        beforeLabel: 'V1 — Previous Version',
+        afterLabel: 'V4 — Redesigned',
+      },
     },
     features: [
       {
@@ -838,35 +980,28 @@ export const caseStudies = {
         problem: 'Engineers received delayed alerts — by the time they were notified through the sensor chain, the issue window had already passed, making effective response impossible.',
         solution: 'Replaced the sensor-based delayed alert chain with a real-time, seconds-based system. Alerts appear in the Digital Twin the moment they are triggered, with full context and severity triage.',
         impact: '73% improvement in alert response time, instant notification for critical issues, prevented escalation of problems due to late awareness.',
-        image: '/images/projects/dt-alert-management.png',
+        image: '/images/projects/DT.gif',
       },
       {
-        title: 'Immersive 3D Plant Walkthrough',
-        problem: 'Engineers had to physically visit the plant to inspect assets, verify operator activity, and investigate errors — time-consuming and dependent on geographic presence.',
-        solution: 'A fully immersive 3D digital twin environment with minimal, unobtrusive UI. Clean icon-based left sidebar, contextual asset cards, and flexible 2D/3D view controls enable complete spatial exploration without visual clutter.',
-        impact: '60% of issues resolved remotely without site visits, saved significant travel costs, enabled verification of operator activities from anywhere in the world.',
-        image: '/images/projects/dt-plant-walkthrough.png',
-      },
-      {
-        title: 'Real-Time Asset Status Monitoring',
-        problem: 'Engineers could not see current operational status of assets without visiting the plant or checking across multiple disconnected monitoring systems.',
-        solution: 'Real-time 3D visualisation showing asset status directly in the immersive environment — running (green), breakdown (red), or standby (yellow) — visible at a glance within the spatial plant context.',
-        impact: 'Instant plant-wide asset health visibility, quick identification of problem areas, eliminated the need to check multiple monitoring systems simultaneously.',
-        image: '/images/projects/dt-asset-status.png',
+        title: 'Immersive 3D Plant Monitoring',
+        problem: 'Engineers had to physically visit the plant to inspect assets and verify activity, while asset status was scattered across disconnected systems with no unified spatial view.',
+        solution: 'A fully immersive 3D digital twin environment where asset health is visible in real time — running (green), breakdown (red), standby (yellow) — directly within the spatial plant context. Clean icon-based sidebar and flexible 2D/3D controls enable complete exploration without visual clutter.',
+        impact: '60% of issues resolved remotely without site visits, instant plant-wide asset health visibility, and eliminated the need to cross-reference multiple monitoring systems.',
+        image: '/images/projects/DT Immersive.gif',
       },
       {
         title: 'Integrated DWSIM Simulation',
         problem: 'Engineers used external DWSIM tools to simulate process changes, then had to return to the monitoring platform to test results — fragmented and time-consuming.',
         solution: 'Integrated DWSIM simulation engine directly into the Digital Twin platform, allowing engineers to simulate efficiency improvements, output optimisation, and process modifications within a single unified interface.',
         impact: 'Eliminated tool-switching entirely, streamlined simulation workflow, enabled faster testing of process improvements, reduced time from hypothesis to implementation.',
-        image: '/images/projects/dt-dwsim-integration.png',
+        image: '/images/projects/DW-Sim.gif',
       },
       {
         title: 'Minimal Spatial UI Design',
         problem: 'Traditional industrial interfaces overwhelmed users with dense information displays that obscured the plant view and created cognitive overload during high-pressure monitoring.',
         solution: 'Minimal, unobtrusive UI with a clean icon-based left sidebar, bottom view controls (2D/3D toggle, layers, compare, rotate), and contextual asset cards that appear only when needed — keeping the 3D environment always in focus.',
         impact: 'Maintained full focus on the spatial plant environment, reduced visual clutter, enabled intuitive navigation for engineers monitoring complex multi-asset facilities.',
-        image: '/images/projects/dt-minimal-ui.png',
+        image: '/images/projects/Minimal DT.gif',
       },
     ],
     results: {
@@ -874,7 +1009,7 @@ export const caseStudies = {
         { value: '73%', label: 'Improvement in alert response time' },
         { value: '60%', label: 'Of issues resolved remotely without site visits' },
         { value: '0', label: 'Tool switching between monitoring and simulation' },
-        { value: 'Real-time', label: 'Asset status visibility across entire facility' },
+        { value: 'Live', label: 'Asset status visibility across entire facility' },
         { value: '↓', label: 'Travel costs for routine inspection and verification' },
         { value: '↑', label: 'Spatial understanding of complex plant relationships' },
       ],

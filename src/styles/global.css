@@ -78,7 +78,7 @@ input, textarea {
   --accent-blue:       #4D5BFF;
   --accent-purple:     #8B5CF6;
   --accent-yellow:     #F08D32;
-  --accent-red:        #EE4D37;
+  --accent-pink:       #FF2D87;
 
   --gradient-glass:    linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
   --gradient-glow:     radial-gradient(circle, rgba(77,91,255,0.15) 0%, transparent 70%);

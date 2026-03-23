@@ -11,7 +11,6 @@ export const personal = {
     { label: 'LinkedIn', url: 'https://linkedin.com/in/mohamednoufal', icon: 'linkedin' },
     { label: 'Behance', url: 'https://behance.net/mohamednoufal', icon: 'behance' },
     { label: 'Dribbble', url: 'https://dribbble.com/mohamednoufal', icon: 'dribbble' },
-    { label: 'Instagram', url: 'https://instagram.com/mohamednoufal', icon: 'instagram' },
   ],
 };
 
@@ -45,7 +44,7 @@ export const projects = [
   {
     id: 'clonos-tablet',
     title: 'CLONOS Tablet',
-    heading: 'Empowering Field Workers with Multilingual, Touch-First Data Collection',
+    heading: 'Empowering Field Workers with AR-Guided, Touch-First Data Collection',
     platform: 'Tablet',
     description:
       'Designed a tablet-first companion interface for on-the-floor operators to control and monitor robotic systems in real time.',
@@ -85,6 +84,7 @@ export const projects = [
     image: '/images/projects/taqumart.png',
     accent: '#00FF66',
     link: '/projects/taqumart',
+    comingSoon: true,
   },
   {
     id: 'pariksha-guru-student',
@@ -94,8 +94,9 @@ export const projects = [
     description:
       'Designed an EdTech exam preparation app focused on accessible learning experiences for students across India.',
     image: '/images/projects/pariksha-guru-student.png',
-    accent: '#EE4D37',
+    accent: '#FF2D87',
     link: '/projects/pariksha-guru-student',
+    comingSoon: true,
   },
   {
     id: 'pariksha-guru-admin',
@@ -107,6 +108,7 @@ export const projects = [
     image: '/images/projects/pariksha-guru-admin.png',
     accent: '#4D5BFF',
     link: '/projects/pariksha-guru-admin',
+    comingSoon: true,
   },
 ];
 

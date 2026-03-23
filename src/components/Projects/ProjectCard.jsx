@@ -10,7 +10,7 @@ function CardFront({ project }) {
         position: 'relative',
         borderRadius: 'var(--radius-lg)',
         overflow: 'hidden',
-        background: `linear-gradient(135deg, ${project.accent}22, ${project.accent}08)`,
+        background: `linear-gradient(135deg, color-mix(in srgb, ${project.accent} 22%, #141414) 0%, #141414 100%)`,
       }}
     >
       {project.image ? (
@@ -51,6 +51,29 @@ function CardFront({ project }) {
           {project.heading}
         </h3>
       </div>
+
+      {/* Coming soon badge */}
+      {project.comingSoon && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 16,
+            right: 16,
+            padding: '5px 12px',
+            borderRadius: '999px',
+            background: 'rgba(240,141,50,0.15)',
+            border: '1px solid rgba(240,141,50,0.4)',
+            backdropFilter: 'blur(8px)',
+            fontSize: '0.65rem',
+            fontFamily: 'var(--font-mono)',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: '#F08D32',
+          }}
+        >
+          Work in Progress
+        </div>
+      )}
     </div>
   );
 }
@@ -68,7 +91,7 @@ function CardBack({ project }) {
         padding: '28px 28px',
         borderRadius: 'var(--radius-lg)',
         background: 'var(--bg-tertiary)',
-        border: '1px solid var(--glass-02)',
+        border: '1px solid var(--white-10)',
         boxShadow: 'var(--shadow-elevated)',
         textAlign: 'center',
         gap: '20px',
@@ -100,32 +123,53 @@ function CardBack({ project }) {
         {project.description}
       </p>
 
-      <Link
-        to={project.link}
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '12px 28px',
-          background: 'var(--accent-green)',
-          color: 'var(--bg-primary)',
-          fontWeight: 600,
-          fontSize: '0.875rem',
-          borderRadius: 'var(--radius-full)',
-          transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          textDecoration: 'none',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 255, 102, 0.25)';
-          e.currentTarget.style.transform = 'translateY(-4px)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = 'none';
-          e.currentTarget.style.transform = 'translateY(0)';
-        }}
-      >
-        View Case Study <span>→</span>
-      </Link>
+      {project.comingSoon ? (
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '12px 28px',
+            border: '1px solid rgba(240,141,50,0.3)',
+            background: 'rgba(240,141,50,0.08)',
+            color: '#F08D32',
+            fontWeight: 600,
+            fontSize: '0.875rem',
+            borderRadius: 'var(--radius-full)',
+            fontFamily: 'var(--font-mono)',
+            letterSpacing: '0.04em',
+          }}
+        >
+          Case Study Coming Soon
+        </div>
+      ) : (
+        <Link
+          to={project.link}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '12px 28px',
+            background: 'var(--accent-green)',
+            color: 'var(--bg-primary)',
+            fontWeight: 600,
+            fontSize: '0.875rem',
+            borderRadius: 'var(--radius-full)',
+            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            textDecoration: 'none',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 255, 102, 0.25)';
+            e.currentTarget.style.transform = 'translateY(-4px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = 'none';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          View Case Study <span>→</span>
+        </Link>
+      )}
     </div>
   );
 }
