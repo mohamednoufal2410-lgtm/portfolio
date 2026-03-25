@@ -604,7 +604,7 @@ export const caseStudies = {
   'vr-training-simulator': {
     title: 'CLONOS VR Training',
     headline: 'Designing the End-to-End Trainer Experience for a VR-Based Industrial Training Platform',
-    heroImage: '/images/projects/vr-training-simulator.png',
+    heroImage: '/images/projects/clonos VR.png',
     meta: {
       role: 'UI/UX Designer',
       duration: '4 months',
@@ -694,6 +694,7 @@ export const caseStudies = {
           'Trainer-facing dashboards in VR platforms were typically afterthoughts with minimal live session visibility',
           'No platform we reviewed handled the third-party VR handoff state with a clear UX narrative',
           'Compliance certificate generation was universally manual or bolt-on — never treated as a primary design surface',
+          'No existing platform provided a structured pre-session entry screen — trainees were dropped into VR with no context or language setup',
         ],
       },
     },
@@ -749,23 +750,22 @@ export const caseStudies = {
         image: '/images/projects/VR OTS.gif',
       },
       {
-        title: 'VR Session Handoff State',
-        problem: 'Once a trainee put on the headset, the trainer had no clear signal about what CLONOS controlled vs. what was happening inside the third-party VR environment — creating confusion and false expectations.',
-        solution: 'Designed a dedicated holding screen that surfaces a clear handoff moment — "Session in progress on device" — communicating session status to the trainer without implying CLONOS owned the VR environment.',
-        impact: 'Eliminated trainer confusion about system boundaries. The handoff screen became a trusted status signal, not a dead end.',
+        title: 'Intricate Detailed Video Lessons',
+        problem: 'Trainees had no way to understand the internal workings of complex machinery before operating it — text-based SOPs gave no spatial context and were ignored in practice.',
+        solution: 'Embedded step-by-step video lessons inside the VR environment show the internal mechanics of each machine — how pistons fire, how valves sequence, how control handles map to output — before trainees interact with the equipment.',
+        impact: 'Trainees arrived at each interaction point with a clear mental model of what was happening inside the machine, leading to higher task completion rates and fewer procedural errors in post-VR assessments.',
         image: '/images/projects/VR Immersive.gif',
       },
       {
-        title: 'Audit-Ready Certificate Generation',
-        problem: 'After every training session, trainers manually created completion certificates — reconstructing session data from memory days later, creating audit risk and compliance gaps.',
-        solution: 'Certificate generation is triggered automatically at session close — pre-filled with trainee name, trainer sign-off, completion date, scenario completed, and organisation branding. Printable and exportable from the same screen.',
-        impact: '0 manual steps for certificate creation. Training records became audit-ready at the moment a session ended, not days later.',
+        title: 'Pre-Session Module Entry Screen',
+        problem: 'There was no designed entry point for the VR module. Trainees launched directly into the headset with no context set and no language preference captured upfront.',
+        solution: 'Designed a pre-session screen with the module title, a written overview of the glass bottle forming process, a VR environment thumbnail, and an audio language selector — giving trainees context before they put on the headset.',
+        impact: 'The screen became a standard pattern across all CLONOS VR modules and served as a key touchpoint for language setup and session readiness.',
         image: '/images/projects/VR Immersive 2.gif',
       },
     ],
     results: {
       adoption: [
-        { value: '8', label: 'Screens covering the full trainer cycle end-to-end' },
         { value: '1', label: 'Unified dashboard replacing 3 disconnected tools' },
         { value: '0', label: 'Manual steps required for certificate generation' },
         { value: '↓', label: 'Pre-session setup time for module assignment' },

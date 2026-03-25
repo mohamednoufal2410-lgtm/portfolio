@@ -180,18 +180,25 @@ function DesignToggleCard({ label, wireframeImage, finalImage }) {
   );
 }
 
-const sectionIds = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'context', label: 'Context' },
-  { id: 'problem', label: 'Problem' },
-  { id: 'research', label: 'Research' },
-  { id: 'design', label: 'Design' },
-  { id: 'prototype', label: 'Prototype' },
-  { id: 'features', label: 'Solutions' },
-  { id: 'results', label: 'Results' },
-  { id: 'learnings', label: 'Learnings' },
-  { id: 'nextsteps', label: 'Next Steps' },
-];
+function buildSectionIds(study) {
+  const ids = [
+    { id: 'overview',  label: 'Overview'   },
+    { id: 'context',   label: 'Context'    },
+    { id: 'problem',   label: 'Problem'    },
+    { id: 'research',  label: 'Research'   },
+    { id: 'design',    label: 'Design'     },
+  ];
+  if (study?.prototypeUrl || study?.prototypes?.length > 0)
+    ids.push({ id: 'prototype', label: 'Prototype' });
+  ids.push(
+    { id: 'features',  label: 'Solutions'  },
+    { id: 'results',   label: 'Results'    },
+    { id: 'learnings', label: 'Learnings'  },
+  );
+  if (study?.nextSteps)
+    ids.push({ id: 'nextsteps', label: 'Next Steps' });
+  return ids;
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -214,6 +221,7 @@ export default function CaseStudy() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   const fillWidth = useTransform(scaleX, [0, 1], ['0%', '100%']);
+  const sectionIds = buildSectionIds(study);
   const sectionRefs = useRef({});
 
   // Scroll to top before paint when slug changes (useLayoutEffect = before paint, not after)
@@ -906,9 +914,10 @@ export default function CaseStudy() {
         )}
       </motion.section>
 
-      <hr className={styles.divider} />
+      {(study.prototypeUrl || study.prototypes?.length > 0) && <hr className={styles.divider} />}
 
       {/* ===== Prototype ===== */}
+      {(study.prototypeUrl || study.prototypes?.length > 0) && (
       <motion.section
         id="prototype"
         ref={(el) => (sectionRefs.current.prototype = el)}
@@ -964,6 +973,7 @@ export default function CaseStudy() {
           )}
         </motion.div>
       </motion.section>
+      )}
 
       <hr className={styles.divider} />
 

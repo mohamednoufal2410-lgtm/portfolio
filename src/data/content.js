@@ -6,11 +6,10 @@ export const personal = {
   subtext:
     'I blend user research, interaction design, and visual storytelling to build products people love. Currently open to new opportunities.',
   email: 'mohamednoufal.design@gmail.com',
-  resumeUrl: '#',
+  resumeUrl: '/images/projects/Mohamed Noufal - UI UX Designer - Updated.pdf',
   socials: [
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/mohamednoufal', icon: 'linkedin' },
-    { label: 'Behance', url: 'https://behance.net/mohamednoufal', icon: 'behance' },
-    { label: 'Dribbble', url: 'https://dribbble.com/mohamednoufal', icon: 'dribbble' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-noufal-k-b2063b1b4/', icon: 'linkedin' },
+    { label: 'Behance', url: 'https://www.behance.net/mnoufal', icon: 'behance' },
   ],
 };
 
@@ -70,7 +69,7 @@ export const projects = [
     platform: 'VR',
     description:
       'Created an immersive VR training environment for industrial safety, bringing spatial awareness and hands-on practice to high-risk scenarios.',
-    image: '/images/projects/vr-training-simulator.png',
+    image: '/images/projects/clonos VR.png',
     accent: '#8B5CF6',
     link: '/projects/vr-training-simulator',
   },
