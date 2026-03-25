@@ -858,25 +858,27 @@ export default function CaseStudy() {
         )}
 
         {/* Wireframe vs Final Design */}
-        <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-2xl)' }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-md)' }}>
-            Wireframe to Final Design
-          </h3>
-          <p style={{ fontSize: '0.875rem', color: 'var(--white-40)', marginBottom: 'var(--space-lg)' }}>
-            Toggle between the wireframe and the final UI to see how the design evolved.
-          </p>
+        {study.designProcess.wireframes?.length > 0 && (
+          <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-2xl)' }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-md)' }}>
+              Wireframe to Final Design
+            </h3>
+            <p style={{ fontSize: '0.875rem', color: 'var(--white-40)', marginBottom: 'var(--space-lg)' }}>
+              Toggle between the wireframe and the final UI to see how the design evolved.
+            </p>
 
-          <div className={styles.featureCards}>
-            {study.designProcess.wireframes?.map((w, i) => (
-              <DesignToggleCard
-                key={i}
-                label={w.label}
-                wireframeImage={w.wireframeImage}
-                finalImage={w.finalImage}
-              />
-            ))}
-          </div>
-        </motion.div>
+            <div className={styles.featureCards}>
+              {study.designProcess.wireframes.map((w, i) => (
+                <DesignToggleCard
+                  key={i}
+                  label={w.label}
+                  wireframeImage={w.wireframeImage}
+                  finalImage={w.finalImage}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
 
         {/* Design Iteration Slider */}
         {study.designProcess.iterationSlider && (
