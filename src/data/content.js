@@ -6,7 +6,7 @@ export const personal = {
   subtext:
     'I blend user research, interaction design, and visual storytelling to build products people love. Currently open to new opportunities.',
   email: 'mdnoufaldesigns@gmail.com',
-  resumeUrl: '/images/projects/Mohamed Noufal - UI UX Designer - Updated.pdf',
+  resumeUrl: '/images/projects/Mohamed Noufal - Product Designer - Resume.pdf',
   socials: [
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-noufal-k-b2063b1b4/', icon: 'linkedin' },
     { label: 'Behance', url: 'https://www.behance.net/mnoufal', icon: 'behance' },
@@ -29,6 +29,17 @@ export const marqueeItems = [
 ];
 
 export const projects = [
+  {
+    id: 'klapr',
+    title: 'Klapr',
+    heading: 'Ads That Stop the Scroll, Minus the Shoot',
+    platform: 'Brand & Web',
+    description:
+      'Built the brand identity and marketing site for Klapr, an AI-directed ad studio — defining its voice, visual system, and production framework, then designing and building the site that sells it.',
+    image: '/images/projects/Klapr v2.gif',
+    accent: '#D8401F',
+    link: '/projects/klapr',
+  },
   {
     id: 'clonos',
     title: 'CLONOS Desktop',
@@ -155,6 +166,13 @@ export const experience = [
     period: 'Mar 2025 – Apr 2025',
     location: 'Remote',
     projectIds: ['pariksha-guru-student', 'pariksha-guru-admin'],
+  },
+  {
+    company: 'Klapr',
+    role: 'Founder — Brand & Product Design',
+    period: 'Jun 2026 – Present',
+    location: 'Remote',
+    projectIds: ['klapr'],
   },
 ];
 

@@ -181,20 +181,22 @@ function DesignToggleCard({ label, wireframeImage, finalImage }) {
 }
 
 function buildSectionIds(study) {
-  const ids = [
-    { id: 'overview',  label: 'Overview'   },
-    { id: 'context',   label: 'Context'    },
-    { id: 'problem',   label: 'Problem'    },
-    { id: 'research',  label: 'Research'   },
-    { id: 'design',    label: 'Design'     },
-  ];
+  const ids = [{ id: 'overview', label: 'Overview' }];
+  if (study?.context || study?.currentProcess)
+    ids.push({ id: 'context', label: 'Context' });
+  if (study?.painPoints?.length > 0)
+    ids.push({ id: 'problem', label: 'Problem' });
+  if (study?.research || study?.personas?.length > 0)
+    ids.push({ id: 'research', label: 'Research' });
+  ids.push({ id: 'design', label: 'Design' });
   if (study?.prototypeUrl || study?.prototypes?.length > 0)
     ids.push({ id: 'prototype', label: 'Prototype' });
-  ids.push(
-    { id: 'features',  label: 'Solutions'  },
-    { id: 'results',   label: 'Results'    },
-    { id: 'learnings', label: 'Learnings'  },
-  );
+  if (study?.features?.length > 0)
+    ids.push({ id: 'features', label: 'Solutions' });
+  if (study?.results || study?.testimonials?.length > 0)
+    ids.push({ id: 'results', label: 'Results' });
+  if (study?.learnings)
+    ids.push({ id: 'learnings', label: 'Learnings' });
   if (study?.nextSteps)
     ids.push({ id: 'nextsteps', label: 'Next Steps' });
   return ids;
@@ -564,6 +566,8 @@ export default function CaseStudy() {
         </>
       )}
 
+      {study.painPoints?.length > 0 && (
+      <>
       <hr className={styles.divider} />
 
       {/* ===== Problem ===== */}
@@ -653,7 +657,11 @@ export default function CaseStudy() {
           </div>
         </motion.div>
       </motion.section>
+      </>
+      )}
 
+      {(study.research || study.personas?.length > 0) && (
+      <>
       <hr className={styles.divider} />
 
       {/* ===== Research ===== */}
@@ -669,10 +677,13 @@ export default function CaseStudy() {
         <motion.p className={styles.sectionLabel} variants={fadeUp} style={{ color: 'var(--accent-blue)', background: 'rgba(77,91,255,0.08)', borderColor: 'rgba(77,91,255,0.2)' }}>Research</motion.p>
         <motion.h2 className={styles.sectionTitle} variants={fadeUp}>Understanding the Users</motion.h2>
 
+        {study.research && (
+        <>
         {/* Research Method Cards */}
         <motion.div className={styles.methodGrid} variants={stagger}>
 
           {/* Interviews */}
+          {study.research.interviews && (
           <motion.div className={`${styles.methodCard} ${styles.methodCardBlue}`} variants={fadeUp}>
             <div className={styles.methodCardHead}>
               <span className={styles.methodIcon}>◎</span>
@@ -688,8 +699,10 @@ export default function CaseStudy() {
               ))}
             </ul>
           </motion.div>
+          )}
 
           {/* Contextual Inquiry */}
+          {study.research.contextualInquiry && (
           <motion.div className={`${styles.methodCard} ${styles.methodCardGreen}`} variants={fadeUp}>
             <div className={styles.methodCardHead}>
               <span className={styles.methodIcon}>◈</span>
@@ -705,8 +718,10 @@ export default function CaseStudy() {
               ))}
             </ul>
           </motion.div>
+          )}
 
           {/* Market Analysis */}
+          {study.research.marketAnalysis && (
           <motion.div className={`${styles.methodCard} ${styles.methodCardYellow}`} variants={fadeUp}>
             <div className={styles.methodCardHead}>
               <span className={styles.methodIcon}>◉</span>
@@ -722,10 +737,14 @@ export default function CaseStudy() {
               ))}
             </ul>
           </motion.div>
+          )}
 
         </motion.div>
+        </>
+        )}
 
         {/* Personas */}
+        {study.personas?.length > 0 && (
         <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-3xl)' }}>
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-md)' }}>
             User Personas
@@ -748,7 +767,10 @@ export default function CaseStudy() {
             ))}
           </div>
         </motion.div>
+        )}
       </motion.section>
+      </>
+      )}
 
       <hr className={styles.divider} />
 
@@ -1094,6 +1116,8 @@ export default function CaseStudy() {
         </div>
       </motion.section>
 
+      {(study.results || study.testimonials?.length > 0) && (
+      <>
       <hr className={styles.divider} />
 
       {/* ===== Results ===== */}
@@ -1109,7 +1133,7 @@ export default function CaseStudy() {
         <motion.p className={styles.sectionLabel} variants={fadeUp}>Results</motion.p>
         <motion.h2 className={styles.sectionTitle} variants={fadeUp}>Measurable Impact</motion.h2>
 
-        {Object.entries(study.results).map(([category, items]) => (
+        {study.results && Object.entries(study.results).map(([category, items]) => (
           <motion.div key={category} className={styles.resultsCategory} variants={fadeUp}>
             <h3 className={styles.resultsCategoryTitle}>
               {category.charAt(0).toUpperCase() + category.slice(1)} Metrics
@@ -1126,6 +1150,7 @@ export default function CaseStudy() {
         ))}
 
         {/* Testimonials */}
+        {study.testimonials?.length > 0 && (
         <motion.div variants={fadeUp} style={{ marginTop: 'var(--space-2xl)' }}>
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--white)', marginBottom: 'var(--space-lg)' }}>
             What Users Said
@@ -1163,8 +1188,13 @@ export default function CaseStudy() {
             )}
           </div>
         </motion.div>
+        )}
       </motion.section>
+      </>
+      )}
 
+      {study.learnings && (
+      <>
       <hr className={styles.divider} />
 
       {/* ===== Learnings ===== */}
@@ -1219,6 +1249,8 @@ export default function CaseStudy() {
           </ul>
         </motion.div>
       </motion.section>
+      </>
+      )}
 
       {study.nextSteps && (
         <>
@@ -1250,6 +1282,8 @@ export default function CaseStudy() {
         </>
       )}
 
+      {study.ecosystem && (
+      <>
       <hr className={styles.divider} />
 
       {/* ===== Ecosystem ===== */}
@@ -1273,6 +1307,8 @@ export default function CaseStudy() {
           ))}
         </motion.div>
       </motion.section>
+      </>
+      )}
 
       {/* ===== Image Lightbox ===== */}
       {lightboxSrc && (

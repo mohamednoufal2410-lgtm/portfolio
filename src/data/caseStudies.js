@@ -1,4 +1,242 @@
 export const caseStudies = {
+  klapr: {
+    title: 'Klapr',
+    heading: 'Building the Brand and Site for an AI-Directed Ad Studio',
+    headline: 'Ads That Stop the Scroll, Minus the Shoot',
+    heroImage: '/images/projects/Klapr v2.gif',
+    meta: {
+      role: 'Brand Identity & Web Design',
+      duration: 'Ongoing',
+      platform: 'Marketing Website',
+      team: 'Solo — brand, design & build',
+      tools: ['Figma', 'Vite'],
+    },
+    summary:
+      'Defined the brand voice, visual identity, and AI-production framework for Klapr, then designed and built the marketing site that sells it — from a single content brief through to a shipped, cinematic web experience.',
+    myRole: {
+      description:
+        'I built Klapr from the ground up as a self-directed venture — defining the brand voice and "daylight film studio" visual identity, documenting a repeatable prompt and negative-prompt system for directing AI video models, then designing and building the marketing site itself.',
+      responsibilities: [
+        'Brand Strategy & Voice',
+        'Visual Identity & Logo System',
+        'AI Prompt & Production Framework',
+        'Website Design & Build',
+        'Motion Design',
+      ],
+    },
+    overview:
+      'Klapr is an AI-directed ad and content studio — it treats generative video models the way a director treats a camera: as an instrument, not the point. I designed and built the brand and the site end to end, from the first content brief to a shipped, cinematic marketing site.',
+    background:
+      'The studio produces video ads and social creative in-house using models like Veo, Kling, Runway, and Higgsfield, aiming to keep the craft of a real production while cutting the cost and calendar of one. Live client work so far spans a beverage campaign (ginger ale) and a skincare campaign (Noura).',
+    context: {
+      headline: 'What a traditional ad shoot costs versus what Klapr delivers',
+      description:
+        "Klapr's pitch is built directly against the economics of a conventional production: brands get studio-quality creative without the timeline or cost of a real shoot.",
+      currentReality: [
+        'A traditional shoot takes 2–4 weeks from brief to delivery',
+        'Crew, location, and talent costs limit most brands to 1–3 variants per concept',
+        'Reshoots after a campaign underperforms mean booking another full production cycle',
+        'Testing multiple hooks or angles is rarely affordable, so brands ship their best guess',
+      ],
+      contextCard: {
+        title: 'Klapr, by the numbers',
+        items: [
+          { label: 'Turnaround', value: '4–5 days, brief to delivery' },
+          { label: 'Variants per campaign', value: '30+' },
+          { label: 'Cost vs. a traditional shoot', value: '~1/10' },
+          { label: 'Models directed', value: 'Veo, Kling, Runway + more' },
+          { label: 'Live work so far', value: 'Beverage, Skincare' },
+        ],
+        note: "These are the studio's own live facts — a reshoot is a prompt, not a flight.",
+      },
+      comparison: {
+        before: 'A traditional shoot',
+        after: 'Klapr',
+        rows: [
+          { before: '2–4 weeks brief to delivery', after: '4–5 days brief to delivery' },
+          { before: '1–3 variants per concept', after: '30+ variants per campaign' },
+          { before: 'Full cost of crew, location, and talent', after: '~1/10 the cost of a traditional shoot' },
+          { before: 'A reshoot means booking another shoot day', after: 'A reshoot is a prompt, not a flight' },
+        ],
+      },
+    },
+    problemIntro:
+      "Directed well, generative video can match the craft of a real production. Directed carelessly, it produces exactly the \"AI slop\" brands are trying to avoid. Klapr's brand and site needed to solve for both sides of that:",
+    painPoints: [
+      {
+        title: 'Traditional Production Is Slow and Expensive',
+        description:
+          'A real shoot means weeks of pre-production, crew, and location costs before a single ad is ready to test — brands can only afford to make one or two versions of an idea.',
+      },
+      {
+        title: 'Generative Models Fail in Predictable Ways',
+        description:
+          'Left undirected, AI video models hallucinate garbled text, warp hands, and duplicate objects — output that reads as "generated" instead of shot.',
+      },
+      {
+        title: 'Generic "AI Slop" Undermines Brand Trust',
+        description:
+          'Neon-on-black gradients and hype language ("unleash," "revolutionary") are instantly recognizable as AI-made and cheapen the brand around them.',
+      },
+      {
+        title: "Marketers Can't Test at the Volume They Need",
+        description:
+          'Performance teams want dozens of creative variants to test against ROAS, but traditional production economics only support a handful.',
+      },
+    ],
+    hmwStatement:
+      'How might we give AI-generated ads the craft and consistency of a real production studio, so brands get scroll-stopping creative without the cost and calendar of a traditional shoot?',
+    goals: [
+      'Define a distinct visual identity that reads as directed craft, not generic "AI slop"',
+      'Codify a repeatable prompt and negative-prompt system so output stays consistent across models',
+      'Speak clearly to performance marketers, brand managers, and agencies without over-explaining the tech',
+      'Ship a fast, cinematic marketing site that also works as a portfolio piece',
+    ],
+    responsibilities: [
+      'Brand Strategy',
+      'Visual Identity',
+      'Prompt Engineering Framework',
+      'Web Design & Build',
+      'Motion Design',
+    ],
+    designPhases: [
+      {
+        phase: 'Define',
+        accent: 'yellow',
+        activities: [
+          'Wrote the content & creative brief — one-liner, audience, voice rules',
+          'Locked the "hard rules": no em dashes, no AI-slop visual tells',
+          'Named the three services: Creative Strategy, Creative Production, Launch & Scale',
+        ],
+      },
+      {
+        phase: 'Identity',
+        accent: 'purple',
+        activities: [
+          'Built the "daylight film studio" visual language — warm paper, ink, one red accent',
+          'Explored the K-clap mark across multiple logo systems',
+          'Set the type pairing: Fraunces for display, Archivo for UI, Fragment Mono for timecodes',
+        ],
+      },
+      {
+        phase: 'Prompt System',
+        accent: 'blue',
+        activities: [
+          'Documented failure modes across Veo, Kling, Runway, and Higgsfield',
+          'Wrote a standing negative-prompt template to cut re-rolls',
+          'Built prompt templates for hero, abstract, screen, and slow-motion shots',
+        ],
+      },
+      {
+        phase: 'Build',
+        accent: 'green',
+        activities: [
+          'Designed and built the site in Vite with GSAP and Lenis for scroll motion',
+          'Structured Home, Work, Studio, and Contact as distinct "scenes"',
+          'Wired the showreel and film gallery to a single data file for fast updates',
+        ],
+      },
+      {
+        phase: 'Ship & Iterate',
+        accent: 'pink',
+        activities: [
+          'Launched with real client work: a ginger ale beverage campaign and a Noura skincare campaign',
+          "Left the README as a living checklist for real videos, socials, and analytics",
+        ],
+      },
+    ],
+    designProcess: {
+      ia: [
+        'Home — hero reel, proof of work, showreel',
+        'Work — case-by-case film gallery',
+        'Studio — services, voice, and process',
+        'Contact — booking and brief intake',
+      ],
+    },
+    features: [
+      {
+        title: 'Creative Strategy',
+        problem:
+          "Good production doesn't fix a weak idea — brands needed concepts and hooks defined before anything gets made.",
+        solution:
+          'Creative direction, hook development, scriptwriting, and trend intelligence upfront, so every asset starts from a strategy, not a prompt.',
+        impact: 'Every deliverable ties back to a defined concept and message, not ad-hoc generation.',
+        image: '/images/projects/Klapr v2.gif',
+      },
+      {
+        title: 'Creative Production',
+        problem: 'Traditional shoots make it expensive to produce enough creative to actually test.',
+        solution:
+          'AI video ads, display creatives, carousels, and brand systems directed the way a studio directs a camera — with explicit shot type, lens, light direction, and a locked palette.',
+        impact: 'Campaign-ready assets at roughly a tenth of traditional shoot cost.',
+        image: '/images/projects/Klapr v2.gif',
+      },
+      {
+        title: 'Launch, Adapt & Scale',
+        problem: 'Not knowing which concept will win means most brands only ever test one.',
+        solution:
+          'Reels, shorts, platform-specific cutdowns, and variations built and tested in parallel — 30+ variants per campaign.',
+        impact: '4–5 day turnaround from brief to delivery, so the best idea earns the right to scale.',
+      },
+    ],
+    learnings: {
+      worked: [
+        {
+          title: 'Camera Moves, Not Objects',
+          description:
+            'The golden rule for every prompt: move the camera, not the objects. Static subjects with camera motion are the model\'s comfort zone — objects animating themselves warp and morph.',
+        },
+        {
+          title: 'One Accent Per Frame',
+          description:
+            'Locking the palette to warm bone, ink, and exactly one deep-red accent kept every generated frame on-brand, regardless of which model made it.',
+        },
+        {
+          title: 'Blur the Screens',
+          description:
+            'Shooting any on-screen software at a raking angle, softly out of focus, reads as "software" without the model hallucinating garbled UI text.',
+        },
+      ],
+      challenges: [
+        {
+          title: 'Generative Failure Modes',
+          description:
+            'Hands, legible text, and counting all break predictably across models — every prompt needed a standing negative list to cut down on re-rolls.',
+        },
+        {
+          title: 'Staying Editorial, Not "AI"',
+          description:
+            'Avoiding neon gradients and hype language took a deliberate, documented rule set — the default generative aesthetic pulls hard toward generic.',
+        },
+      ],
+      differently: [
+        'Write the negative-prompt template before the first shoot, not after several rounds of re-rolls',
+        'Lock file-naming and asset-folder conventions earlier to keep handoff clean',
+      ],
+    },
+    nextSteps: {
+      description:
+        "The site shipped functional, but the studio's own README still tracks what's left before a full public launch:",
+      items: [
+        {
+          title: 'Real Video URLs & Showreel',
+          description:
+            'Swap placeholder film entries in src/data/films.js for the actual delivered client films, plus a proper showreel cut.',
+        },
+        {
+          title: 'Contact & Social Wiring',
+          description:
+            'Connect the Formspree contact form and replace the placeholder social links in the footer and contact rail.',
+        },
+        {
+          title: 'Homepage Proof Points',
+          description:
+            'Add real stats — films delivered, industries served, average turnaround — once there is enough client work to report.',
+        },
+      ],
+    },
+  },
+
   clonos: {
     title: 'CLONOS Desktop Platform',
     heading: 'Digitizing Asset Management Workflows for Industrial Plant Engineers',
