@@ -6,7 +6,7 @@ export const personal = {
   subtext:
     'I blend user research, interaction design, and visual storytelling to build products people love. Currently open to new opportunities.',
   email: 'mdnoufaldesigns@gmail.com',
-  resumeUrl: '/images/projects/Mohamed Noufal - Product Designer - Resume.pdf',
+  resumeUrl: '/images/projects/Mohamed-Noufal-Product-Designer-Resume.pdf',
   socials: [
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-noufal-k-b2063b1b4/', icon: 'linkedin' },
     { label: 'Behance', url: 'https://www.behance.net/mnoufal', icon: 'behance' },
